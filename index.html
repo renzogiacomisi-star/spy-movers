@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qué movió al SPY</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #E9EDF1;
+  --panel: #F7F9FB;
+  --ink: #18222D;
+  --muted: #5B6878;
+  --line: #CBD3DC;
+  --up: #1D7A5B;
+  --up-soft: #CFE6DC;
+  --down: #B3374A;
+  --down-soft: #F0D3D8;
+  --accent: #2F5577;
+  --spy: #2457A6;
+  --ew: #C07A12;
+  --on-color: #FFFFFF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F161E;
+    --panel: #16202A;
+    --ink: #E3E9EF;
+    --muted: #8D9AA9;
+    --line: #2A3845;
+    --up: #4DB38C;
+    --up-soft: #1B3A30;
+    --down: #E26A7C;
+    --down-soft: #45232A;
+    --accent: #8FB4D8;
+    --spy: #7FB0FF;
+    --ew: #F2B44D;
+    --on-color: #0F161E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F161E; --panel: #16202A; --ink: #E3E9EF; --muted: #8D9AA9; --line: #2A3845;
+  --up: #4DB38C; --up-soft: #1B3A30; --down: #E26A7C; --down-soft: #45232A; --accent: #8FB4D8; --spy: #7FB0FF; --ew: #F2B44D; --on-color: #0F161E;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 64px; }
+h1, h2, h3 { margin: 0; font-stretch: 75%; letter-spacing: 0; }
+h1 { font-size: 22px; font-weight: 700; }
+h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.up { color: var(--up); }
+.down { color: var(--down); }
+
+/* Encabezado */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+.top-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+select, input[type="search"] {
+  font: inherit; color: var(--ink); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px;
+}
+select:focus-visible, input:focus-visible, button:focus-visible, .seg:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+/* Hero */
+.brand { font-weight: 700; font-stretch: 75%; font-size: 17px; }
+.hero { margin-bottom: 36px; }
+.headline {
+  font-size: clamp(40px, 7.4vw, 92px); font-weight: 800; font-stretch: 68%;
+  line-height: .95; letter-spacing: -0.01em; max-width: 14ch; margin: 0;
+}
+.stamp { margin-top: 14px; font-size: 14px; color: var(--muted); }
+.rule { height: 4px; background: var(--ink); margin: 18px 0 24px; border: 0; }
+.lead { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: start; }
+.lead-text { max-width: 68ch; display: grid; gap: 14px; font-size: 17px; line-height: 1.6; }
+.lead-text .p1 { font-size: 19px; }
+.lead-text .p2 { display: grid; gap: 8px; }
+.figures { display: grid; gap: 18px; justify-items: end; text-align: right; }
+.big { font-stretch: 62%; font-weight: 800; font-size: clamp(48px, 7vw, 84px); line-height: .9; }
+.big small { display: block; font-size: 14px; font-weight: 500; font-stretch: 100%; color: var(--muted); margin-top: 6px; line-height: 1.3; }
+@media (max-width: 760px) {
+  .lead { grid-template-columns: 1fr; }
+  .figures { grid-template-columns: 1fr 1fr; justify-items: start; text-align: left; order: -1; }
+}
+
+/* Ayuda "?" */
+.h-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.h-row h2 { margin: 0; }
+.help {
+  flex: none; width: 24px; height: 24px; border-radius: 50%;
+  border: 1.5px solid var(--muted); background: transparent; color: var(--muted);
+  font: 700 13px/1 "Archivo", Arial, sans-serif; cursor: pointer; padding: 0;
+}
+.help[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--panel); }
+.help-box {
+  margin: 10px 0 14px; padding: 14px 16px; border-left: 3px solid var(--accent);
+  background: var(--bg); border-radius: 0 6px 6px 0; font-size: 14px; max-width: 78ch; display: grid; gap: 8px;
+}
+.help-box[hidden] { display: none; }
+
+/* Campana */
+.swarm-box { position: relative; width: 100%; }
+.swarm-box svg { display: block; width: 100%; height: auto; overflow: visible; }
+.swarm-box circle { cursor: default; }
+.swarm-box circle:hover, .swarm-box circle:focus { stroke: var(--ink); stroke-width: 1.5; outline: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.legend .k-spy { color: var(--spy); font-weight: 700; }
+.legend .k-ew { color: var(--ew); font-weight: 700; }
+.legend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+.tug-wrap { position: relative; }
+.tug-sides { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.tug {
+  position: relative; display: flex; height: 64px; background: var(--panel);
+  border-radius: 4px; overflow: hidden;
+}
+.seg {
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; font-stretch: 75%; color: var(--on-color);
+  border-right: 1px solid var(--panel); overflow: hidden; white-space: nowrap; cursor: default;
+}
+.seg.pos { background: var(--up); }
+.seg.neg { background: var(--down); }
+.seg.rest { opacity: .55; }
+.zero { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--ink); }
+.net { position: relative; height: 34px; margin-top: 4px; }
+.net-mark { position: absolute; top: 0; transform: translateX(-50%); text-align: center; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.net-mark::before { content: ""; display: block; width: 0; height: 0; margin: 0 auto 2px;
+  border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 8px solid var(--ink); }
+.tug-caption { min-height: 22px; font-size: 14px; margin-top: 2px; }
+.summary { margin-top: 18px; max-width: 72ch; display: grid; gap: 4px; font-size: 16px; }
+
+/* Grilla */
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+.panel { background: var(--panel); border-radius: 8px; padding: 20px; min-width: 0; }
+.span-12 { grid-column: span 12; }
+.span-7 { grid-column: span 7; }
+.span-5 { grid-column: span 5; }
+.span-6 { grid-column: span 6; }
+@media (max-width: 900px) { .span-7, .span-5, .span-6 { grid-column: span 12; } }
+.panel-note { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+
+/* Contribuyentes */
+.movers { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+@media (max-width: 600px) { .movers { grid-template-columns: 1fr; } }
+.movers h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.row { display: grid; grid-template-columns: 62px minmax(0, 1fr) 66px; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.row .tk { font-weight: 700; }
+.row .nm { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .val { text-align: right; font-weight: 700; }
+.minibar { height: 4px; border-radius: 2px; margin-top: 3px; }
+
+/* Sectores */
+.sec { display: grid; grid-template-columns: 150px 1fr 66px; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.sec .meta { font-size: 12px; color: var(--muted); }
+.div-bar { position: relative; height: 14px; }
+.div-bar .axis { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--muted); }
+.div-bar .fill { position: absolute; top: 0; bottom: 0; border-radius: 2px; }
+@media (max-width: 600px) { .sec { grid-template-columns: 110px 1fr 58px; } }
+
+/* Amplitud */
+.split { display: flex; height: 26px; border-radius: 4px; overflow: hidden; margin: 6px 0 4px; }
+.split div { display: flex; align-items: center; padding: 0 8px; font-size: 12px; font-weight: 700; color: var(--on-color); white-space: nowrap; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; margin-top: 18px; }
+.stat b { display: block; font-size: 26px; font-stretch: 70%; font-weight: 800; line-height: 1.1; }
+.stat > span { font-size: 13px; color: var(--muted); }
+.spark { width: 100%; height: 70px; display: block; margin-top: 6px; }
+
+/* Concentración */
+.conc-bar { display: flex; height: 22px; border-radius: 4px; overflow: hidden; margin: 10px 0 6px; background: var(--bg); }
+
+/* Tablas */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: right; padding: 6px 8px; border-top: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child, th.l, td.l { text-align: left; }
+th { font-weight: 600; color: var(--muted); font-size: 13px; }
+th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+th button[aria-sort="descending"]::after { content: " ▾"; }
+th button[aria-sort="ascending"]::after { content: " ▴"; }
+.scroll { overflow-x: auto; }
+.table-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.tbl-body { max-height: 560px; overflow: auto; }
+td .nm { color: var(--muted); max-width: 240px; overflow: hidden; text-overflow: ellipsis; display: inline-block; vertical-align: bottom; }
+
+/* Tabla con solapas */
+.tabs { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 8px; }
+.tabs button {
+  font: inherit; font-size: 14px; color: var(--muted); background: transparent; border: 0;
+  padding: 6px 12px; border-radius: 6px; cursor: pointer; white-space: nowrap;
+}
+.tabs button[aria-selected="true"] { background: var(--panel); color: var(--ink); font-weight: 700; box-shadow: 0 0 0 1px var(--line); }
+.tbl-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 24px; align-items: start; }
+@media (max-width: 900px) { .tbl-layout { grid-template-columns: 1fr; } }
+tfoot td { font-weight: 700; border-top: 2px solid var(--ink); background: var(--panel); position: sticky; bottom: 0; }
+.explain { background: var(--bg); border-radius: 8px; padding: 16px; display: grid; gap: 10px; }
+.explain b { display: block; font-size: 40px; font-stretch: 65%; font-weight: 800; line-height: 1; }
+.explain p { font-size: 13px; color: var(--muted); }
+.explain .big-l { font-size: 14px; color: var(--ink); }
+
+footer { margin-top: 32px; font-size: 13px; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+.empty { padding: 40px 20px; background: var(--panel); border-radius: 8px; max-width: 60ch; }
+.empty h2 { margin-bottom: 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .tug .seg { animation: grow .5s ease-out both; }
+  @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="brand">Qué movió al SPY</span>
+    <div class="top-right">
+      <label for="date" class="muted">Día</label>
+      <select id="date" aria-label="Elegir día"></select>
+      <span id="updated" class="muted"></span>
+    </div>
+  </header>
+
+  <main id="app">
+    <p class="muted">Cargando datos…</p>
+  </main>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const LOC = "es-UY";
+const nf = (d, sign = true) => new Intl.NumberFormat(LOC, {
+  minimumFractionDigits: d, maximumFractionDigits: d, signDisplay: sign ? "exceptZero" : "auto"
+});
+const fmt = (x, d = 2, sign = true) => x == null || Number.isNaN(x) ? "s/d" : nf(d, sign).format(x);
+const cls = x => x > 0 ? "up" : x < 0 ? "down" : "";
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const app = document.getElementById("app");
+
+async function getJSON(url) {
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+async function init() {
+  const sel = document.getElementById("date");
+  // Modo Streamlit: los datos vienen incrustados en la página
+  if (window.__SPY__) {
+    const d0 = window.__SPY__;
+    const liveDate = window.__SPY_LIVE_DATE__ || null;
+    const isLive = window.__SPY_VIEW__ === "live";
+    const liveLabel = liveDate
+      ? (isLive && d0.session === "open" ? "Hoy, en vivo" : fechaCorta(liveDate))
+      : "Último dato";
+    const past = (window.__SPY_DATES__ || []).filter(x => x !== liveDate);
+    sel.innerHTML = `<option value="live">${liveLabel}</option>` +
+      past.map(x => `<option value="${x}">${fechaCorta(x)}</option>`).join("");
+    sel.value = isLive ? "live" : d0.date;
+    sel.addEventListener("change", () => goTo(sel.value));
+    render(d0);
+    fitFrame();
+    return;
+  }
+  let dates = [];
+  try { dates = await getJSON("data/dates.json"); } catch (e) { /* sin historial */ }
+  sel.innerHTML = dates.map(d => `<option value="${d}">${fechaCorta(d)}</option>`).join("");
+  sel.addEventListener("change", () => load(`data/history/${sel.value}.json`));
+  load("data/latest.json");
+}
+
+function goTo(day) {
+  try {
+    const P = window.parent;
+    const u = new URL(P.location.href);
+    if (day === "live") u.searchParams.delete("d"); else u.searchParams.set("d", day);
+    // La navegación se ejecuta desde la página principal (Streamlit no deja navegar desde el recuadro)
+    new P.Function("u", "window.location.assign(u)")(u.toString());
+  } catch (e) {
+    window.open(day === "live" ? "?" : `?d=${day}`, "_blank");
+  }
+}
+
+// Ajusta el alto del recuadro de Streamlit al contenido, para que no haya doble scroll
+function fitFrame() {
+  let fe = null;
+  try { fe = window.frameElement; } catch (e) { return; }
+  if (!fe) return;
+  const wrap = document.querySelector(".wrap");
+  const set = () => {
+    const h = Math.ceil(wrap.getBoundingClientRect().bottom + window.scrollY + 8);
+    if (Math.abs(fe.offsetHeight - h) > 2) { fe.style.height = h + "px"; fe.height = h; }
+  };
+  set();
+  new ResizeObserver(set).observe(wrap);
+}
+
+async function load(url) {
+  try {
+    const d = await getJSON(url);
+    document.getElementById("date").value = d.date;
+    render(d);
+  } catch (e) {
+    app.innerHTML = `<div class="empty">
+      <h2>Todavía no hay datos</h2>
+      <p>No se pudieron cargar los datos. Volvé a intentar en unos minutos.</p>
+    </div>`;
+    document.getElementById("foot").innerHTML = "";
+  }
+}
+
+function fechaCorta(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(LOC, { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+}
+function fechaLarga(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(LOC, { weekday: "long", day: "numeric", month: "long" }).replace(",", "");
+}
+
+function render(d) {
+  const gen = new Date(d.generated_at);
+  document.getElementById("updated").textContent =
+    "Actualizado " + gen.toLocaleString(LOC, { timeZone: "America/Montevideo", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) + " (Montevideo)"
+    + (d.session === "open" && window.__SPY_REFRESH__ ? `. Se actualiza cada ${Math.round(window.__SPY_REFRESH__ / 60)} minutos.` : "");
+
+  const usePts = d.components.some(c => c.p != null);
+  const val = c => usePts ? c.p : c.c;
+  const unit = usePts ? "pts" : "pp";
+
+  const nyToday = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+  const live = d.session === "open";
+  const up = (d.spy_ret ?? 0) >= 0;
+  const title = live
+    ? `¿Por qué ${up ? "sube" : "baja"} el mercado hoy?`
+    : d.date === nyToday
+      ? `¿Por qué ${up ? "subió" : "bajó"} el mercado hoy?`
+      : `¿Por qué ${up ? "subió" : "bajó"} el mercado el ${fechaLarga(d.date)}?`;
+  const hora = gen.toLocaleTimeString(LOC, { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit" });
+  const stamp = live
+    ? `Precios actualizados a las ${hora} de Nueva York, ${fechaLarga(d.date)}. Mercado abierto, con demora de hasta 15 minutos.`
+    : `Datos al cierre del ${fechaLarga(d.date)}.`;
+  document.title = title + " | Qué movió al SPY";
+
+  app.innerHTML = `
+    <section class="hero" aria-label="Resumen del día">
+      <h1 class="headline">${esc(title)}</h1>
+      <p class="stamp">${esc(stamp)}</p>
+      <hr class="rule">
+      <div class="lead">
+        <div class="lead-text">
+          <p class="p1">${esc(d.summary[0] ?? "")}</p>
+          <div class="p2">${d.summary.slice(1).map(s => `<p>${esc(s)}</p>`).join("")}</div>
+        </div>
+        <div class="figures">
+          <div class="big ${cls(d.spy_ret)}">${fmt(d.spy_ret, 2)}%<small>SPY</small></div>
+          <div class="big ${cls(d.spx_pts)}">${fmt(d.spx_pts, 1)}<small>Puntos del S&amp;P 500, en ${fmt(d.spx_last, 2, false)}</small></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid" style="margin-bottom:20px">
+      <section class="panel span-12" aria-labelledby="h-tug">
+        <div class="h-row">
+          <h2 id="h-tug">Quién empujó y quién frenó al índice</h2>
+          ${helpBtn("help-tug", "Cómo leer la barra")}
+        </div>
+        <div id="help-tug" class="help-box" hidden>
+          <p>Cada bloque es una acción. Su ancho es cuántos puntos del S&amp;P 500 aportó hoy, que es su peso en el índice multiplicado por su variación del día. Una acción grande que se mueve poco puede pesar más que una chica que se mueve mucho.</p>
+          <p>A la derecha de la línea del cero están las que sumaron y a la izquierda las que restaron, ordenadas de mayor a menor desde el cero hacia afuera. Las más chicas se agrupan en "Otras".</p>
+          <p>El largo total de la barra no es el movimiento del índice: es todo lo que empujó para arriba más todo lo que empujó para abajo. El movimiento del índice es la diferencia entre los dos lados, y lo marca el triángulo "Neto". Si un lado es mucho más largo, el día fue direccional; si los dos lados son parecidos, hubo mucha pelea interna y poco movimiento neto.</p>
+          <p>Pasá el cursor o tocá un bloque para ver el detalle.</p>
+        </div>
+        ${tugBar(d.components, val, unit, d.model_pts ?? d.model_ret)}
+      </section>
+
+      <section class="panel span-12" aria-labelledby="h-swarm">
+        <div class="h-row">
+          <h2 id="h-swarm">Cómo se movió cada acción</h2>
+          ${helpBtn("help-swarm", "Cómo leer la campana")}
+        </div>
+        <div id="help-swarm" class="help-box" hidden>
+          <p>Cada círculo es una acción del S&amp;P 500. La posición horizontal es cuánto varió hoy y el tamaño es su peso en el índice. Las acciones se apilan donde hay muchas con variaciones parecidas, por eso el conjunto toma forma de campana.</p>
+          <p>Hay tres líneas verticales. La <strong style="color:var(--spy)">azul</strong> es la variación del SPY, que pondera cada acción por su tamaño. La <strong style="color:var(--ew)">naranja punteada</strong> es la variación equiponderada: el promedio simple de las ~500 acciones, como si todas pesaran lo mismo. Es la misma idea que el RSP (S&amp;P 500 equal weight). La gris es el 0%.</p>
+          <p>La equiponderada no da exactamente igual al RSP: el RSP rebalancea a pesos iguales cada tres meses, y entre rebalanceos sus pesos se van corriendo con los precios. Por eso pueden diferir unas décimas; el valor del RSP está en el panel de Amplitud.</p>
+          <p>Cómo interpretarlo: si la campana está corrida hacia un lado, el movimiento fue generalizado. Si la campana está centrada pero los círculos grandes están en un extremo, el índice se mueve por unas pocas empresas grandes y la línea azul se separa de la naranja. Cuanto más ancha la campana, más dispersión hubo entre acciones.</p>
+          <p>Las variaciones extremas se muestran pegadas al borde del gráfico; el detalle real aparece al pasar el cursor.</p>
+        </div>
+        <div id="swarm" class="swarm-box"></div>
+        <div class="legend">
+          <span class="k-spy"><i style="border-color:var(--spy);border-top-width:3px"></i>SPY, ponderado por tamaño ${fmt(d.spy_ret, 2)}%</span>
+          <span class="k-ew"><i style="border-color:var(--ew);border-top-style:dashed"></i>Equiponderado, como el RSP ${fmt(d.breadth.equal_weight_ret, 2)}%</span>
+          <span><i style="border-color:var(--muted)"></i>0%</span>
+        </div>
+        <p class="tug-caption muted" id="swarmcap" aria-live="polite">Pasá el cursor o tocá un círculo para ver el detalle.</p>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section class="panel span-12" aria-labelledby="h-movers">
+        <h2 id="h-movers">Acciones que más movieron el índice</h2>
+        <p class="panel-note">Ordenadas por puntos aportados al S&amp;P 500, no por variación porcentual.</p>
+        ${movers(d.components, val, unit)}
+      </section>
+
+      <section class="panel span-12" aria-labelledby="h-sec">
+        <h2 id="h-sec">Aporte por sector</h2>
+        <p class="panel-note">Puntos aportados, variación ponderada del sector y cuántas acciones subieron.</p>
+        ${sectors(d.sectors, unit, usePts)}
+      </section>
+
+      <section class="panel span-6" aria-labelledby="h-breadth">
+        <h2 id="h-breadth">Amplitud</h2>
+        ${breadth(d)}
+      </section>
+
+      <section class="panel span-6" aria-labelledby="h-conc">
+        <h2 id="h-conc">Concentración</h2>
+        ${concentration(d, usePts)}
+        <h2 style="margin-top:28px">Contexto</h2>
+        ${contextTable(d.context)}
+      </section>
+
+      <section class="panel span-12" aria-labelledby="h-all">
+        <div class="table-tools">
+          <h2 id="h-all">Composición del SPY</h2>
+          <div class="tabs" role="tablist" aria-label="Cantidad de acciones">
+            ${[["10", "Top 10"], ["15", "Top 15"], ["20", "Top 20"], ["all", "Índice total"]].map(([k, l]) =>
+              `<button role="tab" type="button" data-n="${k}" aria-selected="false">${l}</button>`).join("")}
+          </div>
+        </div>
+        <p class="panel-note" id="tab-note"></p>
+        <div class="tbl-layout">
+          <div>
+            <input type="search" id="q" placeholder="Buscar ticker, nombre o sector" aria-label="Buscar acción" style="margin-bottom:10px;width:100%;max-width:320px">
+            <div class="scroll tbl-body"><table id="all"></table></div>
+          </div>
+          <aside class="explain" id="explain" aria-live="polite"></aside>
+        </div>
+      </section>
+    </div>`;
+
+  wireTug();
+  wireHelp();
+  drawSwarm(d);
+  window.onresize = debounce(() => { drawSwarm(d); fitTugLabels(); }, 150);
+  allTable(d.components, usePts, usePts ? d.model_pts : d.model_ret);
+
+  const miss = d.missing?.length ? ` Sin precio hoy: ${d.missing.map(esc).join(", ")}.` : "";
+  document.getElementById("foot").innerHTML = `
+    <p>Contribución = peso de la acción en el SPY × variación del día. Los pesos son los publicados por SSGA (as of ${esc(d.holdings_as_of ?? "s/d")}); los precios vienen de Yahoo Finance con demora. Los puntos se calculan sobre el cierre anterior del S&amp;P 500 (${fmt(d.spx_prev, 2, false)}).</p>
+    <p>Control: la suma de contribuciones da ${fmt(d.model_ret, 3)}% contra ${fmt(d.spy_ret, 3)}% del SPY (diferencia de ${fmt(d.residual, 3)} pp, por caja, dividendos y redondeos).${miss}</p>`;
+}
+
+/* ---------- Tira de fuerzas ---------- */
+function tugBar(comps, val, unit, net) {
+  const N = 12;
+  const pos = comps.filter(c => val(c) > 0).sort((a, b) => val(b) - val(a));
+  const neg = comps.filter(c => val(c) < 0).sort((a, b) => val(a) - val(b));
+  const P = pos.reduce((s, c) => s + val(c), 0);
+  const Nn = -neg.reduce((s, c) => s + val(c), 0);
+  const T = P + Nn || 1;
+  const segs = [];
+  const restNeg = neg.slice(N), restPos = pos.slice(N);
+  // Izquierda: desde el borde hacia el cero (las más grandes junto al cero)
+  if (restNeg.length) segs.push({ t: `Otras ${restNeg.length}`, v: restNeg.reduce((s, c) => s + val(c), 0), rest: true, cls: "neg" });
+  neg.slice(0, N).reverse().forEach(c => segs.push({ t: c.t, n: c.n, r: c.r, v: val(c), cls: "neg" }));
+  pos.slice(0, N).forEach(c => segs.push({ t: c.t, n: c.n, r: c.r, v: val(c), cls: "pos" }));
+  if (restPos.length) segs.push({ t: `Otras ${restPos.length}`, v: restPos.reduce((s, c) => s + val(c), 0), rest: true, cls: "pos" });
+
+  const zero = Nn / T * 100;
+  const netPos = Math.min(98, Math.max(2, zero + (net / T) * 100));
+  const html = segs.map(s => {
+    const w = Math.abs(s.v) / T * 100;
+    const label = esc(s.t);
+    const desc = s.rest ? `${s.t}: ${fmt(s.v, 2)} ${unit}` : `${s.t} ${s.n ? "(" + s.n + ")" : ""}: ${fmt(s.r, 2)}%, ${fmt(s.v, 2)} ${unit}`;
+    return `<div class="seg ${s.cls}${s.rest ? " rest" : ""}" style="width:${w}%" tabindex="0" data-desc="${esc(desc)}" data-label="${label}" aria-label="${esc(desc)}"></div>`;
+  }).join("");
+
+  return `<div class="tug-wrap">
+    <div class="tug-sides"><span class="down">Restaron ${fmt(-Nn, 1)} ${unit}</span><span class="up">Sumaron ${fmt(P, 1)} ${unit}</span></div>
+    <div class="tug" role="img" aria-label="Contribución de cada acción, negativas a la izquierda y positivas a la derecha">${html}<div class="zero" style="left:calc(${zero}% - 1px)"></div></div>
+    <div class="net"><div class="net-mark" style="left:${netPos}%">Neto ${fmt(net, 1)} ${unit}</div></div>
+    <p class="tug-caption muted" id="tugcap" aria-live="polite">Pasá el cursor o tocá un bloque para ver el detalle.</p>
+  </div>`;
+}
+function fitTugLabels() {
+  // Muestra el ticker solo si entra completo en el bloque
+  document.querySelectorAll(".seg").forEach(el => {
+    el.innerHTML = `<span>${el.dataset.label}</span>`;
+    if (el.firstChild.offsetWidth > el.clientWidth - 6) el.textContent = "";
+  });
+}
+function wireTug() {
+  fitTugLabels();
+  const cap = document.getElementById("tugcap");
+  document.querySelectorAll(".seg").forEach(el => {
+    const show = () => { cap.textContent = el.dataset.desc; cap.classList.remove("muted"); };
+    el.addEventListener("mouseenter", show);
+    el.addEventListener("focus", show);
+    el.addEventListener("click", show);
+  });
+}
+
+/* ---------- Ayuda ---------- */
+function helpBtn(id, label) {
+  return `<button class="help" type="button" aria-expanded="false" aria-controls="${id}" aria-label="${esc(label)}" title="${esc(label)}">?</button>`;
+}
+function wireHelp() {
+  document.querySelectorAll(".help").forEach(b => b.addEventListener("click", () => {
+    const box = document.getElementById(b.getAttribute("aria-controls"));
+    const open = b.getAttribute("aria-expanded") === "true";
+    b.setAttribute("aria-expanded", String(!open));
+    box.hidden = open;
+  }));
+}
+function debounce(fn, ms) { let t; return () => { clearTimeout(t); t = setTimeout(fn, ms); }; }
+
+/* ---------- Campana (beeswarm) ---------- */
+function drawSwarm(d) {
+  const box = document.getElementById("swarm");
+  if (!box) return;
+  const W = Math.max(320, box.clientWidth);
+  const comps = d.components.filter(c => c.r != null && c.w != null);
+  if (!comps.length) { box.innerHTML = ""; return; }
+
+  // Rango simétrico que deja afuera solo los extremos (se pegan al borde)
+  const rs = comps.map(c => c.r).sort((a, b) => a - b);
+  const q = p => rs[Math.min(rs.length - 1, Math.max(0, Math.round(p * (rs.length - 1))))];
+  let lim = Math.max(Math.abs(q(0.01)), Math.abs(q(0.99)), Math.abs(d.spy_ret ?? 0), 0.5) * 1.1;
+  const steps = [0.25, 0.5, 1, 2, 2.5, 5, 10, 20];
+  const step = steps.find(s => lim / s <= 4) ?? 20;
+  lim = Math.ceil(lim / step) * step;
+
+  const padX = 12, top = 40, bottom = 30;
+  const sx = r => padX + (Math.max(-lim, Math.min(lim, r)) + lim) / (2 * lim) * (W - 2 * padX);
+  const wmax = Math.max(...comps.map(c => c.w));
+  const rmax = W < 600 ? 15 : 24;
+  const rad = w => Math.max(W < 600 ? 1.4 : 1.8, Math.sqrt(w / wmax) * rmax);
+
+  // Colocación: primero las grandes, cada círculo en la posición vertical libre más cercana al centro
+  const nodes = comps.slice().sort((a, b) => b.w - a.w).map(c => ({ c, x: sx(c.r), r: rad(c.w), y: 0 }));
+  const placed = [];
+  const gap = 0.6;
+  for (const n of nodes) {
+    const near = placed.filter(p => Math.abs(p.x - n.x) < p.r + n.r + gap);
+    const cands = [0];
+    for (const p of near) {
+      const dx = p.x - n.x, R = p.r + n.r + gap;
+      const dy = Math.sqrt(Math.max(0, R * R - dx * dx));
+      cands.push(p.y + dy, p.y - dy);
+    }
+    cands.sort((a, b) => Math.abs(a) - Math.abs(b));
+    for (const y of cands) {
+      if (near.every(p => (p.x - n.x) ** 2 + (p.y - y) ** 2 >= (p.r + n.r + gap) ** 2 - 1e-6)) { n.y = y; break; }
+    }
+    placed.push(n);
+  }
+  const ext = Math.max(...placed.map(n => Math.abs(n.y) + n.r), 30);
+  const H = top + 2 * ext + bottom;
+  const cy = top + ext;
+
+  const ticks = [];
+  for (let v = -lim; v <= lim + 1e-9; v += step) ticks.push(Math.round(v * 100) / 100);
+  const ew = d.breadth.equal_weight_ret, spy = d.spy_ret;
+  const vline = (v, color, dash, label, anchor, width) => v == null ? "" : `
+    <line x1="${sx(v)}" x2="${sx(v)}" y1="${top - 6}" y2="${H - bottom + 4}" stroke="${color}" stroke-width="${width}" ${dash ? 'stroke-dasharray="6 4"' : ""}/>
+    ${label ? `<path d="M ${sx(v) - 5} ${top - 11} L ${sx(v) + 5} ${top - 11} L ${sx(v)} ${top - 4} Z" fill="${color}"/>
+    <text x="${sx(v) + (anchor === "start" ? 7 : anchor === "end" ? -7 : 0)}" y="${top - 15}" text-anchor="${anchor}" font-size="12.5" font-weight="700" fill="${color}">${label}</text>` : ""}`;
+
+  // Etiquetas de las líneas: si quedan muy cerca, se separan en altura
+  const close = spy != null && ew != null && Math.abs(sx(spy) - sx(ew)) < 150;
+
+  // Solo se rotulan los círculos donde el ticker entra completo
+  const fs = n => n.r > 17 ? 11 : 9;
+  const labelled = new Set(nodes.filter(n => 2 * n.r - 3 >= n.c.t.length * fs(n) * 0.62).map(n => n.c.t));
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribución de la variación diaria de las acciones del S&P 500, tamaño según peso">
+    ${ticks.map(t => `<line x1="${sx(t)}" x2="${sx(t)}" y1="${top - 4}" y2="${H - bottom}" stroke="var(--line)" stroke-width="1"/>
+      <text x="${sx(t)}" y="${H - 10}" text-anchor="middle" font-size="${t === 0 ? 13 : 12}" font-weight="${t === 0 ? 800 : 400}" fill="${t === 0 ? "var(--ink)" : "var(--muted)"}">${t === 0 ? "0%" : fmt(t, step < 1 ? 2 : 0) + "%"}</text>`).join("")}
+    ${placed.map((n, i) => `<circle cx="${n.x.toFixed(1)}" cy="${(cy + n.y).toFixed(1)}" r="${n.r.toFixed(1)}"
+        fill="var(${n.c.r > 0 ? "--up" : n.c.r < 0 ? "--down" : "--muted"})" fill-opacity="${n.r > 6 ? 0.85 : 0.7}"
+        stroke="var(--panel)" stroke-width="0.6" tabindex="${n.r >= 6 ? 0 : -1}" data-i="${i}"/>`).join("")}
+    ${placed.filter(n => labelled.has(n.c.t)).map(n => `<text x="${n.x}" y="${cy + n.y + 4}" text-anchor="middle" font-size="${fs(n)}" font-weight="700" fill="var(--on-color)" pointer-events="none">${esc(n.c.t)}</text>`).join("")}
+    ${vline(0, "var(--muted)", false, "", "middle", 1.5)}
+    ${vline(ew, "var(--ew)", true, `Equiponderado ${fmt(ew, 2)}%`, close ? (ew <= spy ? "end" : "start") : "middle", 2)}
+    ${vline(spy, "var(--spy)", false, `SPY ${fmt(spy, 2)}%`, close ? (ew <= spy ? "start" : "end") : "middle", 3)}
+  </svg>`;
+
+  const cap = document.getElementById("swarmcap");
+  const show = el => {
+    const n = placed[+el.dataset.i];
+    if (!n) return;
+    const c = n.c;
+    cap.textContent = `${c.t} (${c.n}), ${c.s}: ${fmt(c.r, 2)}% en el día, peso ${fmt(c.w, 2, false)}%, aporte ${fmt(c.p ?? c.c, 2)} ${c.p != null ? "pts" : "pp"}`;
+    cap.classList.remove("muted");
+  };
+  box.querySelectorAll("circle").forEach(el => {
+    el.addEventListener("mouseenter", () => show(el));
+    el.addEventListener("focus", () => show(el));
+    el.addEventListener("click", () => show(el));
+  });
+}
+
+/* ---------- Contribuyentes ---------- */
+function movers(comps, val, unit) {
+  const pos = comps.filter(c => val(c) > 0).sort((a, b) => val(b) - val(a)).slice(0, 10);
+  const neg = comps.filter(c => val(c) < 0).sort((a, b) => val(a) - val(b)).slice(0, 10);
+  const max = Math.max(...[...pos, ...neg].map(c => Math.abs(val(c))), 1e-9);
+  const list = (arr, color) => arr.map(c => `
+    <div class="row">
+      <div class="tk">${esc(c.t)}</div>
+      <div><div class="nm">${esc(c.n)} <span class="${cls(c.r)}">${fmt(c.r, 2)}%</span></div>
+        <div class="minibar" style="width:${Math.abs(val(c)) / max * 100}%;background:var(${color})"></div></div>
+      <div class="val ${cls(val(c))}">${fmt(val(c), 2)}</div>
+    </div>`).join("") || `<p class="muted">Ninguna.</p>`;
+  return `<div class="movers">
+    <div><h3 class="up">Sumaron (${unit})</h3>${list(pos, "--up")}</div>
+    <div><h3 class="down">Restaron (${unit})</h3>${list(neg, "--down")}</div>
+  </div>`;
+}
+
+/* ---------- Sectores ---------- */
+function sectors(secs, unit, usePts) {
+  const v = s => usePts ? s.p : s.c;
+  const max = Math.max(...secs.map(s => Math.abs(v(s))), 1e-9);
+  return secs.map(s => {
+    const w = Math.abs(v(s)) / max * 50;
+    const left = v(s) >= 0 ? 50 : 50 - w;
+    return `<div class="sec">
+      <div><div>${esc(s.s)}</div><div class="meta">${fmt(s.r, 2)}%, ${s.up} de ${s.n} en alza</div></div>
+      <div class="div-bar"><div class="axis"></div><div class="fill" style="left:${left}%;width:${w}%;background:var(${v(s) >= 0 ? "--up" : "--down"})"></div></div>
+      <div class="val ${cls(v(s))}" style="text-align:right;font-weight:700">${fmt(v(s), 2)}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- Amplitud ---------- */
+function breadth(d) {
+  const b = d.breadth;
+  const t = b.total || 1;
+  const pu = b.adv / t * 100, pd = b.dec / t * 100;
+  const ew = b.equal_weight_ret, spy = d.spy_ret;
+  const spread = (spy != null && b.rsp_ret != null) ? spy - b.rsp_ret : null;
+  return `
+    <p class="panel-note">Cuántas acciones acompañaron el movimiento del índice.</p>
+    <div class="split" role="img" aria-label="${b.adv} suben, ${b.dec} bajan">
+      <div style="width:${pu}%;background:var(--up)">${b.adv} suben</div>
+      ${b.unch ? `<div style="width:${b.unch / t * 100}%;background:var(--muted)"></div>` : ""}
+      <div style="width:${pd}%;background:var(--down);justify-content:flex-end">${b.dec} bajan</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>${fmt(b.pct_above_50, 0, false)}%</b><span>sobre su media de 50 ruedas</span></div>
+      <div class="stat"><b>${fmt(b.pct_above_200, 0, false)}%</b><span>sobre su media de 200 ruedas</span></div>
+      <div class="stat"><b><span class="up">${b.new_highs}</span> / <span class="down">${b.new_lows}</span></b><span>máximos / mínimos de 52 semanas (al cierre)</span></div>
+      <div class="stat"><b class="${cls(ew)}">${fmt(ew, 2)}%</b><span>variación promedio, todas con el mismo peso (mediana ${fmt(b.median_ret, 2)}%)</span></div>
+      <div class="stat"><b class="${cls(b.rsp_ret)}">${fmt(b.rsp_ret, 2)}%</b><span>RSP, S&amp;P 500 equal weight</span></div>
+      <div class="stat"><b class="${cls(spread)}">${fmt(spread, 2)} pp</b><span>SPY menos RSP: positivo es que ganaron las grandes</span></div>
+    </div>
+    <h3 style="font-size:15px;margin-top:22px">Línea de avance y declive, últimas ${b.ad_line.length} ruedas</h3>
+    ${sparkline(b.ad_line.map(x => x.v))}`;
+}
+function sparkline(vals) {
+  if (vals.length < 2) return "";
+  const W = 600, H = 70, pad = 4;
+  const min = Math.min(...vals, 0), max = Math.max(...vals, 0);
+  const x = i => pad + i / (vals.length - 1) * (W - 2 * pad);
+  const y = v => H - pad - (v - min) / ((max - min) || 1) * (H - 2 * pad);
+  const pts = vals.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const last = vals[vals.length - 1];
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Línea de avance y declive, último valor ${last}">
+    <line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)" stroke-width="1"/>
+    <polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  </svg>`;
+}
+
+/* ---------- Concentración ---------- */
+function concentration(d, usePts) {
+  const c = d.concentration;
+  const m = usePts ? c.mag7_pts : c.mag7_contrib;
+  const r = usePts ? c.rest_pts : c.rest_contrib;
+  const t10 = usePts ? c.top10_pts : c.top10_contrib;
+  const unit = usePts ? "pts" : "pp";
+  const tot = Math.abs(m) + Math.abs(r) || 1;
+  return `
+    <p class="panel-note">Cuánto del movimiento vino de las más grandes.</p>
+    <div class="stats" style="margin-top:0">
+      <div class="stat"><b class="${cls(m)}">${fmt(m, 1)} ${unit}</b><span>Mag 7 (${fmt(c.mag7_weight, 1, false)}% del índice)</span></div>
+      <div class="stat"><b class="${cls(r)}">${fmt(r, 1)} ${unit}</b><span>el resto del índice</span></div>
+    </div>
+    <div class="conc-bar" role="img" aria-label="Mag 7 contra el resto, en valor absoluto">
+      <div style="width:${Math.abs(m) / tot * 100}%;background:var(--accent)"></div>
+      <div style="width:${Math.abs(r) / tot * 100}%;background:var(--line)"></div>
+    </div>
+    <p class="muted" style="font-size:13px">Las 10 de mayor peso (${c.top10_tickers.map(esc).join(", ")}) suman ${fmt(c.top10_weight, 1, false)}% del índice y aportaron ${fmt(t10, 1)} ${unit}.</p>`;
+}
+
+/* ---------- Contexto ---------- */
+function contextTable(ctx) {
+  const unitOf = k => k === "pct" ? "%" : k === "bps" ? " pb" : "";
+  return `<div class="scroll"><table>
+    <thead><tr><th class="l">Activo</th><th>Último</th><th>Variación</th></tr></thead>
+    <tbody>${ctx.map(x => `<tr><td class="l">${esc(x.n)}</td><td>${fmt(x.last, 2, false)}</td>
+      <td class="${x.t === "^VIX" ? cls(-x.chg) : cls(x.chg)}">${fmt(x.chg, x.kind === "bps" ? 1 : 2)}${unitOf(x.kind)}</td></tr>`).join("")}</tbody>
+  </table></div>`;
+}
+
+/* ---------- Tabla con solapas ---------- */
+function allTable(comps, usePts, totalPts) {
+  const pk = usePts ? "p" : "c";
+  const unit = usePts ? "pts" : "pp";
+  const cols = [
+    { k: "t", h: "Ticker", l: true },
+    { k: "n", h: "Nombre", l: true },
+    { k: "s", h: "Sector", l: true },
+    { k: "w", h: "Peso %", d: 2, ns: true },
+    { k: "r", h: "Var. %", d: 2 },
+    { k: pk, h: usePts ? "Puntos" : "Aporte pp", d: usePts ? 2 : 3 },
+  ];
+  const byWeight = comps.slice().sort((a, b) => (b.w ?? 0) - (a.w ?? 0));
+  const st = loadState();
+  let tab = st.tab ?? "10";
+  let sortK = st.sortK ?? (tab === "all" ? pk : "w"), dir = st.dir ?? -1, q = st.q ?? "";
+  const tbl = document.getElementById("all");
+  const qEl = document.getElementById("q");
+  qEl.value = q;
+
+  const draw = () => {
+    saveState({ tab, sortK, dir, q });
+    document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.n === tab)));
+    const base = tab === "all" ? comps : byWeight.slice(0, +tab);
+    document.getElementById("tab-note").textContent = tab === "all"
+      ? `Las ${comps.length} acciones del SPY.`
+      : `Las ${tab} acciones de mayor peso en el índice.`;
+    const ql = q.toLowerCase();
+    const rows = base
+      .filter(c => !ql || `${c.t} ${c.n} ${c.s}`.toLowerCase().includes(ql))
+      .slice()
+      .sort((a, b) => {
+        const A = a[sortK], B = b[sortK];
+        if (typeof A === "string") return dir * A.localeCompare(B);
+        return dir * ((A ?? -Infinity) - (B ?? -Infinity));
+      });
+
+    const sumW = rows.reduce((s, r) => s + (r.w ?? 0), 0);
+    const sumC = rows.reduce((s, r) => s + (r.c ?? 0), 0);
+    const sumP = rows.reduce((s, r) => s + (r[pk] ?? 0), 0);
+    const retG = sumW ? sumC / sumW * 100 : null;  // variación ponderada del grupo
+
+    tbl.innerHTML = `<thead><tr>${cols.map(c => `<th class="${c.l ? "l" : ""}"><button data-k="${c.k}" aria-sort="${c.k === sortK ? (dir < 0 ? "descending" : "ascending") : "none"}">${c.h}</button></th>`).join("")}</tr></thead>
+      <tbody>${rows.map(r => `<tr>${cols.map(c => {
+        const v = r[c.k];
+        if (c.l) return `<td class="l">${c.k === "t" ? `<b>${esc(v)}</b>` : c.k === "n" ? `<span class="nm">${esc(v)}</span>` : esc(v)}</td>`;
+        return `<td class="${c.ns ? "" : cls(v)}">${fmt(v, c.d, !c.ns)}</td>`;
+      }).join("")}</tr>`).join("")}</tbody>
+      <tfoot><tr>
+        <td class="l" colspan="3">Total (${rows.length} acciones)</td>
+        <td>${fmt(sumW, 2, false)}</td>
+        <td class="${cls(retG)}">${fmt(retG, 2)}</td>
+        <td class="${cls(sumP)}">${fmt(sumP, usePts ? 2 : 3)}</td>
+      </tr></tfoot>`;
+
+    tbl.querySelectorAll("th button").forEach(b => b.addEventListener("click", () => {
+      const k = b.dataset.k;
+      if (k === sortK) dir = -dir; else { sortK = k; dir = (k === "t" || k === "n" || k === "s") ? 1 : -1; }
+      draw();
+    }));
+    explain(rows.length, sumW, sumP, totalPts, unit);
+  };
+
+  document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+    tab = b.dataset.n; sortK = tab === "all" ? pk : "w"; dir = -1; draw();
+  }));
+  qEl.addEventListener("input", e => { q = e.target.value; draw(); });
+  draw();
+}
+
+function explain(n, sumW, sumP, totalPts, unit) {
+  const box = document.getElementById("explain");
+  const share = totalPts ? sumP / totalPts * 100 : null;
+  const tiny = totalPts == null || Math.abs(totalPts) < 5;  // menos de ~0,07% del índice
+  let txt;
+  if (share == null) txt = "";
+  else if (tiny) txt = "El índice casi no se movió, así que este porcentaje no es representativo: cualquier aporte chico parece enorme.";
+  else if (share > 105) txt = `Estas acciones explican más que todo el movimiento: el resto del índice fue en contra y restó ${fmt(totalPts - sumP, 1)} ${unit}.`;
+  else if (share < 0) txt = "Estas acciones fueron en contra del índice: el movimiento lo hizo el resto.";
+  else txt = `El resto del índice aportó ${fmt(totalPts - sumP, 1)} ${unit}.`;
+  box.innerHTML = `
+    <div><b class="${tiny ? "" : cls(sumP * Math.sign(totalPts || 1))}">${share == null ? "s/d" : fmt(share, 0, false) + "%"}</b>
+      <span class="big-l">del movimiento del índice</span></div>
+    <p>${n} acciones con ${fmt(sumW, 1, false)}% del peso aportaron ${fmt(sumP, 1)} ${unit} de un total de ${fmt(totalPts, 1)} ${unit}.</p>
+    ${txt ? `<p>${esc(txt)}</p>` : ""}`;
+}
+
+/* ---------- Estado de la vista (sobrevive a las actualizaciones automáticas) ---------- */
+function loadState() { try { return JSON.parse(sessionStorage.getItem("spyview") || "{}"); } catch (e) { return {}; } }
+function saveState(p) { try { sessionStorage.setItem("spyview", JSON.stringify({ ...loadState(), ...p })); } catch (e) { /* sin storage */ } }
+
+init();
+</script>
+</body>
+</html>
