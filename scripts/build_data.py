@@ -19,6 +19,7 @@ import math
 import re
 import sys
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import numpy as np
@@ -28,7 +29,9 @@ SSGA_URL = (
     "https://www.ssga.com/us/en/intermediary/library-content/products/"
     "fund-data/etfs/us/holdings-daily-us-en-spy.xlsx"
 )
+WIKI_URL = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 OUT_DIR = Path(__file__).resolve().parent.parent / "site" / "data"
+SECTORS_CACHE = OUT_DIR / "sectors.json"
 
 SECTOR_ES = {
     "Information Technology": "Tecnología",
@@ -100,8 +103,7 @@ def parse_holdings(raw: pd.DataFrame) -> tuple[pd.DataFrame, str | None]:
     # Solo acciones: deja afuera caja, futuros y filas de pie de página.
     df = df[df["ticker"].str.fullmatch(r"[A-Z]{1,5}(\.[A-Z])?")]
     df["yf"] = df["ticker"].str.replace(".", "-", regex=False)
-    df["sector"] = df["sector"].fillna("Sin sector").astype(str).str.strip()
-    df["sector"] = df["sector"].map(lambda x: SECTOR_ES.get(x, x))
+    df["sector"] = df["sector"].fillna("").astype(str).str.strip()
     df["name"] = df["name"].astype(str).str.strip()
     # Por si un ticker aparece repetido: se suman los pesos.
     df = df.groupby("yf", as_index=False, sort=False).agg(
@@ -109,6 +111,52 @@ def parse_holdings(raw: pd.DataFrame) -> tuple[pd.DataFrame, str | None]:
         weight=("weight", "sum"), sector=("sector", "first"),
     )
     return df[["name", "ticker", "weight", "sector", "yf"]], as_of
+
+
+def load_sectors() -> dict:
+    """Sector y sub-industria GICS por ticker, desde la lista del S&P 500 de Wikipedia.
+
+    El Excel de SSGA no trae el sector completo, así que lo tomamos de acá.
+    Si Wikipedia falla, se usa la última copia guardada en site/data/sectors.json.
+    """
+    try:
+        import requests
+
+        r = requests.get(WIKI_URL, headers={"User-Agent": "spy-movers/1.0 (GitHub Actions)"}, timeout=60)
+        r.raise_for_status()
+        table = pd.read_html(io.StringIO(r.text), attrs={"id": "constituents"})[0]
+        m = {
+            str(row["Symbol"]).strip().upper(): {
+                "s": str(row["GICS Sector"]).strip(),
+                "sub": str(row["GICS Sub-Industry"]).strip(),
+            }
+            for _, row in table.iterrows()
+        }
+        if len(m) > 400:
+            SECTORS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+            SECTORS_CACHE.write_text(json.dumps(m, ensure_ascii=False, indent=0), encoding="utf-8")
+            return m
+        print(f"Aviso: Wikipedia devolvió solo {len(m)} filas; uso el caché.")
+    except Exception as e:  # noqa: BLE001
+        print(f"Aviso: no pude leer los sectores de Wikipedia ({e}); uso el caché.")
+    if SECTORS_CACHE.exists():
+        return json.loads(SECTORS_CACHE.read_text(encoding="utf-8"))
+    return {}
+
+
+def apply_sectors(h: pd.DataFrame, m: dict) -> pd.DataFrame:
+    h = h.copy()
+
+    def pick(row):
+        info = m.get(row["ticker"])
+        if info and info.get("s"):
+            return info["s"]
+        s = str(row["sector"]).strip()
+        return s if s and s not in {"-", "nan", "None"} else "Sin sector"
+
+    h["sector"] = h.apply(pick, axis=1).map(lambda x: SECTOR_ES.get(x, x))
+    h["sub"] = h["ticker"].map(lambda t: (m.get(t) or {}).get("sub", ""))
+    return h
 
 
 def load_prices(tickers: list[str]) -> pd.DataFrame:
@@ -181,6 +229,7 @@ def compute(holdings: pd.DataFrame, holdings_as_of: str | None, close: pd.DataFr
                 "t": r["ticker"],
                 "n": r["name"],
                 "s": r["sector"],
+                "sub": r.get("sub", "") if "sub" in r else "",
                 "w": _f(r["weight"], 4),
                 "r": _f(r["ret"] * 100, 3),
                 "c": _f(r["contrib"], 5),
@@ -280,8 +329,12 @@ def compute(holdings: pd.DataFrame, holdings_as_of: str | None, close: pd.DataFr
             chg = b - a
         context.append({"t": t, "n": name, "kind": kind, "last": _f(b, 3), "chg": _f(chg, 3)})
 
+    now_ny = datetime.now(ZoneInfo("America/New_York"))
+    closed = today.date() < now_ny.date() or (now_ny.hour, now_ny.minute) >= (16, 0)
+
     result = {
         "date": today.strftime("%Y-%m-%d"),
+        "session": "closed" if closed else "open",
         "prev_date": prev.strftime("%Y-%m-%d"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "holdings_as_of": holdings_as_of,
@@ -314,74 +367,93 @@ def _num(x, nd=2, sign=True):
     return s.replace(".", ",")
 
 
+def _join(items: list[str]) -> str:
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    return ", ".join(items[:-1]) + " y " + items[-1]
+
+
+def _who(cs: list[dict]) -> str:
+    return _join([f"{c['t']} ({_num(c['p'], 1)} pts)" for c in cs])
+
+
 def build_summary(d: dict) -> list[str]:
-    out = []
-    spy, pts = d["spy_ret"], d["model_pts"]
-    verbo = "subió" if (spy or 0) >= 0 else "bajó"
-    head = f"El SPY {verbo} {_num(abs(spy or 0), 2, False)}%"
-    if d["spx_pts"] is not None:
-        head += f" y el S&P 500 se movió {_num(d['spx_pts'], 1)} puntos"
-    out.append(head + ".")
+    """Dos párrafos: qué movió al índice, y cómo se movió el resto del mercado."""
+    live = d.get("session") == "open"
+    spy = d["spy_ret"] or 0.0
+    up = spy >= 0
+    sign = 1 if up else -1
+    T = lambda pres, past: pres if live else past  # noqa: E731
 
-    comps = d["components"]
-    pos = [c for c in comps if (c["p"] or 0) > 0][:3]
-    neg = sorted([c for c in comps if (c["p"] or 0) < 0], key=lambda c: c["p"])[:3]
-    if pos:
-        out.append(
-            "Lo que más sumó: "
-            + ", ".join(f"{c['t']} ({_num(c['p'], 1)} pts)" for c in pos)
-            + "."
+    # ---- Párrafo 1: qué empujó ------------------------------------------ #
+    mov = T("sube" if up else "baja", "subió" if up else "bajó")
+    pts = d["spx_pts"] if d["spx_pts"] is not None else d["model_pts"]
+    p1 = [f"El SPY {mov} {_num(abs(spy), 2, False)}% ({_num(pts, 1)} puntos del S&P 500)."]
+
+    comps = [c for c in d["components"] if c["p"] is not None]
+    secs = [s for s in d["sectors"] if s["p"] is not None and s["s"] != "Sin sector"]
+    with_move = sorted([s for s in secs if s["p"] * sign > 0], key=lambda s: -abs(s["p"]))
+    if with_move:
+        drv = with_move[0]
+        leaders = sorted([c for c in comps if c["s"] == drv["s"] and c["p"] * sign > 0],
+                         key=lambda c: -abs(c["p"]))[:3]
+        frase = (
+            f"Lo que más empujó la {'suba' if up else 'baja'} {T('es', 'fue')} el sector "
+            f"{drv['s']}, que {T('aporta', 'aportó')} {_num(drv['p'], 1)} pts"
         )
-    if neg:
-        out.append(
-            "Lo que más restó: "
-            + ", ".join(f"{c['t']} ({_num(c['p'], 1)} pts)" for c in neg)
-            + "."
-        )
+        if leaders:
+            frase += f", liderado por {_who(leaders)}"
+        p1.append(frase + ".")
+        if len(with_move) > 1 and abs(with_move[1]["p"]) >= 0.3 * abs(drv["p"]):
+            s2 = with_move[1]
+            p1.append(f"También {T('suma' if up else 'resta', 'sumó' if up else 'restó')} "
+                      f"{s2['s']} ({_num(s2['p'], 1)} pts).")
+    contra = sorted([c for c in comps if c["p"] * sign < 0], key=lambda c: -abs(c["p"]))[:2]
+    if contra:
+        p1.append(f"En contra {T('juegan' if len(contra) > 1 else 'juega', 'jugaron' if len(contra) > 1 else 'jugó')} "
+                  f"{_who(contra)}.")
 
-    secs = d["sectors"]
-    if secs:
-        best, worst = secs[0], secs[-1]
-        if (worst["p"] or 0) < 0:
-            out.append(
-                f"Por sector, {best['s']} fue el que más aportó ({_num(best['p'], 1)} pts) "
-                f"y {worst['s']} el que más restó ({_num(worst['p'], 1)} pts)."
-            )
-        else:
-            out.append(
-                f"Todos los sectores sumaron: {best['s']} el que más ({_num(best['p'], 1)} pts) "
-                f"y {worst['s']} el que menos ({_num(worst['p'], 1)} pts)."
-            )
-
+    # ---- Párrafo 2: concentración, amplitud, RSP, VIX ------------------- #
+    p2 = []
     c = d["concentration"]
-    if c["mag7_pts"] is not None and pts:
-        out.append(
-            f"Las Mag 7 explicaron {_num(c['mag7_pts'], 1)} pts; "
-            f"el resto del índice, {_num(c['rest_pts'], 1)} pts."
-        )
+    if c["mag7_pts"] is not None:
+        p2.append(f"Las 7 magníficas {T('explican', 'explicaron')} {_num(c['mag7_pts'], 1)} pts del movimiento "
+                  f"y el resto del índice {_num(c['rest_pts'], 1)} pts.")
 
     b = d["breadth"]
-    pct_up = b["adv"] / b["total"] * 100 if b["total"] else 0
-    line = f"Amplitud: {b['adv']} acciones subieron y {b['dec']} bajaron ({_num(pct_up, 0, False)}% en alza)."
-    if spy is not None:
-        if spy > 0 and pct_up < 45:
-            line += " Suba angosta: el índice sube con la mayoría de las acciones en baja."
-        elif spy < 0 and pct_up > 55:
-            line += " Baja concentrada: el índice cae aunque la mayoría de las acciones sube."
-    out.append(line)
+    if b["total"]:
+        pct_up = b["adv"] / b["total"] * 100
+        acomp = pct_up if up else 100 - pct_up  # % de acciones que van en la dirección del índice
+        frase = (f"{b['adv']} acciones {T('suben', 'subieron')} y {b['dec']} {T('bajan', 'bajaron')} "
+                 f"({_num(pct_up, 0, False)}% en alza)")
+        if acomp >= 65:
+            p2.append(f"La amplitud {T('es', 'fue')} amplia: {frase}, así que el movimiento {T('es', 'fue')} generalizado.")
+        elif acomp >= 45:
+            p2.append(f"La amplitud {T('es', 'fue')} mixta: {frase}.")
+        else:
+            p2.append(f"La amplitud {T('es', 'fue')} angosta: {frase}. El índice {mov} aunque la mayoría de las "
+                      f"acciones {T('va', 'fue')} para el otro lado.")
 
-    if b["rsp_ret"] is not None and spy is not None:
+    if b["rsp_ret"] is not None:
         spread = spy - b["rsp_ret"]
-        quien = "el índice ponderado por capitalización" if spread > 0 else "el equal weight"
-        out.append(
-            f"SPY {_num(spy)}% contra RSP {_num(b['rsp_ret'])}%: ganó {quien} por "
-            f"{_num(abs(spread), 2, False)} pp."
-        )
+        a, r = f"SPY ({_num(spy)}%)", f"equal weight RSP ({_num(b['rsp_ret'])}%)"
+        if abs(spread) < 0.15:
+            p2.append(f"El {a} y el {r} {T('se mueven', 'se movieron')} parecido, sin un sesgo claro hacia las grandes.")
+        elif spread > 0:
+            p2.append(f"El {a} le {T('gana', 'ganó')} al {r} por {_num(spread, 2, False)} pp, señal de que las "
+                      f"empresas grandes {T('pesan', 'pesaron')} más que la acción típica.")
+        else:
+            p2.append(f"El {r} le {T('gana', 'ganó')} al {a} por {_num(-spread, 2, False)} pp, señal de que la "
+                      f"acción típica {T('rinde', 'rindió')} mejor que las grandes.")
 
     vix = next((x for x in d["context"] if x["t"] == "^VIX"), None)
     if vix and vix["chg"] is not None:
-        out.append(f"VIX en {_num(vix['last'], 2, False)} ({_num(vix['chg'], 2)} pts).")
-    return out
+        verbo = T("sube", "subió") if vix["chg"] > 0 else T("baja", "bajó")
+        p2.append(f"El VIX {verbo} {_num(abs(vix['chg']), 2, False)} puntos, a {_num(vix['last'], 2, False)}.")
+
+    return [" ".join(p1), " ".join(p2)]
 
 
 # --------------------------------------------------------------------------- #
@@ -400,6 +472,9 @@ def save(result: dict, out_dir: Path = OUT_DIR) -> None:
 def main() -> int:
     holdings, as_of = load_holdings()
     print(f"Holdings SSGA: {len(holdings)} acciones (as of {as_of})")
+    holdings = apply_sectors(holdings, load_sectors())
+    sin = int((holdings["sector"] == "Sin sector").sum())
+    print(f"Sectores asignados; sin sector: {sin}")
     tickers = sorted(set(holdings["yf"]) | {t for t, _, _ in CONTEXT})
     close = load_prices(tickers)
     result = compute(holdings, as_of, close)
