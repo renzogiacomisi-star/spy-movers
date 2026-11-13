@@ -1,0 +1,122 @@
+{
+  "revisado": "2026-11-13",
+  "nota": "Cada temática junta las empresas cuya sub-industria GICS está en 'gics' más los tickers de 'agregar', menos los de 'excluir'. Una empresa puede estar en varias temáticas. 'agregada': true marca temáticas que engloban a otras (no se usan en el resumen). Solo se muestran temáticas con al menos 3 empresas del S&P 500.",
+  "tematicas": [
+    {"nombre": "Hyperscalers", "grupo": "IA y tecnología",
+     "agregar": ["MSFT", "AMZN", "GOOGL", "GOOG", "META", "ORCL"]},
+
+    {"nombre": "Chips de IA", "grupo": "IA y tecnología",
+     "agregar": ["NVDA", "AMD", "AVGO", "MRVL"]},
+
+    {"nombre": "Memoria y almacenamiento", "grupo": "IA y tecnología",
+     "agregar": ["MU", "SNDK", "WDC", "STX", "P", "NTAP"]},
+
+    {"nombre": "Equipos para fabricar chips", "grupo": "IA y tecnología",
+     "gics": ["Semiconductor Materials & Equipment"]},
+
+    {"nombre": "Semiconductores analógicos y tradicionales", "grupo": "IA y tecnología",
+     "agregar": ["TXN", "ADI", "MCHP", "NXPI", "ON", "SWKS", "QCOM", "INTC", "MPWR"]},
+
+    {"nombre": "Semiconductores (total)", "grupo": "IA y tecnología", "agregada": true,
+     "gics": ["Semiconductors", "Semiconductor Materials & Equipment"],
+     "excluir": ["FSLR"]},
+
+    {"nombre": "Redes y óptica para centros de datos", "grupo": "IA y tecnología",
+     "agregar": ["ANET", "CSCO", "CIEN", "COHR", "LITE", "APH", "GLW"]},
+
+    {"nombre": "Servidores y hardware de IA", "grupo": "IA y tecnología",
+     "agregar": ["DELL", "SMCI", "HPE", "FLEX", "JBL"]},
+
+    {"nombre": "Centros de datos: energía, refrigeración y obra", "grupo": "IA y tecnología",
+     "agregar": ["VRT", "ETN", "GEV", "PWR", "FIX", "EME", "HUBB", "BE", "TT", "JCI", "GNRC"]},
+
+    {"nombre": "REITs de centros de datos", "grupo": "IA y tecnología",
+     "gics": ["Data Center REITs"], "agregar": ["IRM"]},
+
+    {"nombre": "Generación eléctrica para IA", "grupo": "IA y tecnología",
+     "agregar": ["CEG", "VST", "NRG", "AES", "GEV", "BE"]},
+
+    {"nombre": "Software empresarial", "grupo": "IA y tecnología", "agregada": true,
+     "gics": ["Application Software", "Systems Software"]},
+
+    {"nombre": "Ciberseguridad", "grupo": "IA y tecnología",
+     "agregar": ["CRWD", "PANW", "FTNT", "GEN", "AKAM"]},
+
+    {"nombre": "Software de IA y datos", "grupo": "IA y tecnología",
+     "agregar": ["PLTR", "NOW", "CRM", "DDOG", "APP"]},
+
+    {"nombre": "Servicios de IT y consultoría", "grupo": "IA y tecnología",
+     "gics": ["IT Consulting & Other Services", "Data Processing & Outsourced Services", "Research & Consulting Services"]},
+
+    {"nombre": "Internet y plataformas digitales", "grupo": "IA y tecnología",
+     "gics": ["Interactive Media & Services"],
+     "agregar": ["NFLX", "UBER", "DASH", "ABNB", "BKNG", "EXPE", "EBAY", "APP"]},
+
+    {"nombre": "Dispositivos y electrónica de consumo", "grupo": "IA y tecnología",
+     "gics": ["Consumer Electronics"], "agregar": ["AAPL", "HPQ"]},
+
+    {"nombre": "Bancos grandes", "grupo": "Finanzas", "gics": ["Diversified Banks"]},
+    {"nombre": "Bancos regionales", "grupo": "Finanzas", "gics": ["Regional Banks"]},
+    {"nombre": "Brokers y banca de inversión", "grupo": "Finanzas", "gics": ["Investment Banking & Brokerage"]},
+    {"nombre": "Gestoras de activos y crédito privado", "grupo": "Finanzas", "gics": ["Asset Management & Custody Banks"]},
+    {"nombre": "Bolsas y datos financieros", "grupo": "Finanzas", "gics": ["Financial Exchanges & Data"]},
+    {"nombre": "Pagos y fintech", "grupo": "Finanzas",
+     "gics": ["Transaction & Payment Processing Services"], "agregar": ["COIN", "HOOD", "AXP"]},
+    {"nombre": "Crédito al consumo", "grupo": "Finanzas", "gics": ["Consumer Finance"]},
+    {"nombre": "Seguros", "grupo": "Finanzas",
+     "gics": ["Property & Casualty Insurance", "Life & Health Insurance", "Multi-line Insurance", "Reinsurance", "Insurance Brokers"]},
+
+    {"nombre": "Biotecnología", "grupo": "Salud", "gics": ["Biotechnology"]},
+    {"nombre": "Farmacéuticas", "grupo": "Salud", "gics": ["Pharmaceuticals"]},
+    {"nombre": "Tecnología médica", "grupo": "Salud", "gics": ["Health Care Equipment", "Health Care Supplies"]},
+    {"nombre": "Seguros de salud y servicios médicos", "grupo": "Salud",
+     "gics": ["Managed Health Care", "Health Care Services", "Health Care Facilities", "Health Care Distributors"]},
+    {"nombre": "Herramientas de laboratorio", "grupo": "Salud", "gics": ["Life Sciences Tools & Services"]},
+
+    {"nombre": "Petróleo y gas", "grupo": "Energía y materiales",
+     "gics": ["Integrated Oil & Gas", "Oil & Gas Exploration & Production", "Oil & Gas Refining & Marketing",
+              "Oil & Gas Storage & Transportation", "Oil & Gas Equipment & Services"]},
+    {"nombre": "Utilities reguladas", "grupo": "Energía y materiales",
+     "gics": ["Electric Utilities", "Multi-Utilities", "Gas Utilities", "Water Utilities"],
+     "excluir": ["CEG", "VST"]},
+    {"nombre": "Solar", "grupo": "Energía y materiales", "agregar": ["FSLR", "AES", "NEE", "BE"]},
+    {"nombre": "Minería y metales", "grupo": "Energía y materiales", "gics": ["Copper", "Gold", "Steel"]},
+    {"nombre": "Químicos y gases industriales", "grupo": "Energía y materiales",
+     "gics": ["Industrial Gases", "Specialty Chemicals", "Commodity Chemicals", "Fertilizers & Agricultural Chemicals"]},
+
+    {"nombre": "Aeroespacial y defensa", "grupo": "Industria", "gics": ["Aerospace & Defense"], "agregar": ["LDOS"]},
+    {"nombre": "Automatización y maquinaria", "grupo": "Industria",
+     "gics": ["Industrial Machinery & Supplies & Components", "Construction Machinery & Heavy Transportation Equipment",
+              "Agricultural & Farm Machinery", "Electrical Components & Equipment"]},
+    {"nombre": "Construcción e infraestructura", "grupo": "Industria",
+     "gics": ["Construction & Engineering", "Construction Materials", "Building Products"]},
+    {"nombre": "Transporte y logística", "grupo": "Industria",
+     "gics": ["Rail Transportation", "Cargo Ground Transportation", "Air Freight & Logistics"]},
+    {"nombre": "Residuos y servicios ambientales", "grupo": "Industria", "gics": ["Environmental & Facilities Services"]},
+
+    {"nombre": "Vivienda", "grupo": "Consumo", "gics": ["Homebuilding", "Home Improvement Retail"]},
+    {"nombre": "Viajes y ocio", "grupo": "Consumo",
+     "gics": ["Hotels, Resorts & Cruise Lines", "Passenger Airlines", "Casinos & Gaming"]},
+    {"nombre": "Restaurantes", "grupo": "Consumo", "gics": ["Restaurants"]},
+    {"nombre": "Retail", "grupo": "Consumo",
+     "gics": ["Broadline Retail", "Consumer Staples Merchandise Retail", "Apparel Retail", "Other Specialty Retail",
+              "Automotive Retail", "Computer & Electronics Retail", "Homefurnishing Retail", "Food Retail"]},
+    {"nombre": "Autos y vehículos eléctricos", "grupo": "Consumo",
+     "gics": ["Automobile Manufacturers", "Automotive Parts & Equipment"]},
+    {"nombre": "Alimentos y bebidas", "grupo": "Consumo",
+     "gics": ["Packaged Foods & Meats", "Soft Drinks & Non-alcoholic Beverages", "Distillers & Vintners", "Tobacco",
+              "Agricultural Products & Services", "Food Distributors"]},
+    {"nombre": "Cuidado personal y hogar", "grupo": "Consumo", "gics": ["Household Products", "Personal Care Products"]},
+    {"nombre": "Indumentaria y lujo", "grupo": "Consumo", "gics": ["Apparel, Accessories & Luxury Goods", "Footwear"]},
+
+    {"nombre": "Telecom y torres", "grupo": "Comunicaciones",
+     "gics": ["Integrated Telecommunication Services", "Wireless Telecommunication Services", "Cable & Satellite", "Telecom Tower REITs"]},
+    {"nombre": "Medios y entretenimiento", "grupo": "Comunicaciones",
+     "gics": ["Movies & Entertainment", "Broadcasting", "Publishing", "Interactive Home Entertainment", "Advertising"]},
+
+    {"nombre": "Inmobiliario (REITs)", "grupo": "Inmobiliario",
+     "gics": ["Retail REITs", "Multi-Family Residential REITs", "Single-Family Residential REITs", "Health Care REITs",
+              "Industrial REITs", "Self-Storage REITs", "Office REITs", "Hotel & Resort REITs", "Other Specialized REITs",
+              "Timber REITs", "Real Estate Services"]}
+  ]
+}
