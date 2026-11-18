@@ -1,2014 +1,2517 @@
 {
 "MMM": {
 "s": "Industrials",
-"sub": "Industrial Conglomerates"
+"sub": "Industrial Conglomerates",
+"added": "1957-03-04"
 },
 "AOS": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2017-07-26"
 },
 "ABT": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1957-03-04"
 },
 "ABBV": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2012-12-31"
 },
 "ACN": {
 "s": "Information Technology",
-"sub": "IT Consulting & Other Services"
+"sub": "IT Consulting & Other Services",
+"added": "2011-07-06"
 },
 "ADBE": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "1997-05-05"
 },
 "AMD": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2017-03-20"
 },
 "AES": {
 "s": "Utilities",
-"sub": "Independent Power Producers & Energy Traders"
+"sub": "Independent Power Producers & Energy Traders",
+"added": "1998-10-02"
 },
 "AFL": {
 "s": "Financials",
-"sub": "Life & Health Insurance"
+"sub": "Life & Health Insurance",
+"added": "1999-05-28"
 },
 "A": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2000-06-05"
 },
 "APD": {
 "s": "Materials",
-"sub": "Industrial Gases"
+"sub": "Industrial Gases",
+"added": "1985-04-30"
 },
 "ABNB": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2023-09-18"
 },
 "AKAM": {
 "s": "Information Technology",
-"sub": "Internet Services & Infrastructure"
+"sub": "Internet Services & Infrastructure",
+"added": "2007-07-12"
 },
 "ALB": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "2016-07-01"
 },
 "ARE": {
 "s": "Real Estate",
-"sub": "Office REITs"
+"sub": "Office REITs",
+"added": "2017-03-20"
 },
 "ALGN": {
 "s": "Health Care",
-"sub": "Health Care Supplies"
+"sub": "Health Care Supplies",
+"added": "2017-06-19"
 },
 "ALLE": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2013-12-02"
 },
 "LNT": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2016-07-01"
 },
 "ALL": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "1995-07-13"
 },
 "GOOGL": {
 "s": "Communication Services",
-"sub": "Interactive Media & Services"
+"sub": "Interactive Media & Services",
+"added": "2006-04-03"
 },
 "GOOG": {
 "s": "Communication Services",
-"sub": "Interactive Media & Services"
+"sub": "Interactive Media & Services",
+"added": "2014-04-03"
 },
 "MO": {
 "s": "Consumer Staples",
-"sub": "Tobacco"
+"sub": "Tobacco",
+"added": "1957-03-04"
 },
 "AMZN": {
 "s": "Consumer Discretionary",
-"sub": "Broadline Retail"
+"sub": "Broadline Retail",
+"added": "2005-11-18"
 },
 "AMCR": {
 "s": "Materials",
-"sub": "Paper & Plastic Packaging Products & Materials"
+"sub": "Paper & Plastic Packaging Products & Materials",
+"added": "2019-06-07"
 },
 "AEE": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1991-09-19"
 },
 "AEP": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "AXP": {
 "s": "Financials",
-"sub": "Consumer Finance"
+"sub": "Consumer Finance",
+"added": "1976-06-30"
 },
 "AIG": {
 "s": "Financials",
-"sub": "Multi-line Insurance"
+"sub": "Multi-line Insurance",
+"added": "1980-03-31"
 },
 "AMT": {
 "s": "Real Estate",
-"sub": "Telecom Tower REITs"
+"sub": "Telecom Tower REITs",
+"added": "2007-11-19"
 },
 "AWK": {
 "s": "Utilities",
-"sub": "Water Utilities"
+"sub": "Water Utilities",
+"added": "2016-03-04"
 },
 "AMP": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2005-10-03"
 },
 "AME": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "2013-09-23"
 },
 "AMGN": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "1992-01-02"
 },
 "APH": {
 "s": "Information Technology",
-"sub": "Electronic Components"
+"sub": "Electronic Components",
+"added": "2008-09-30"
 },
 "ADI": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "1999-10-12"
 },
 "AON": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "1996-04-23"
 },
 "APA": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "1997-07-28"
 },
 "APO": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2024-12-23"
 },
 "AAPL": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "1982-11-30"
 },
 "AMAT": {
 "s": "Information Technology",
-"sub": "Semiconductor Materials & Equipment"
+"sub": "Semiconductor Materials & Equipment",
+"added": "1995-03-16"
 },
 "APP": {
 "s": "Communication Services",
-"sub": "Advertising"
+"sub": "Advertising",
+"added": "2025-09-22"
 },
 "APTV": {
 "s": "Consumer Discretionary",
-"sub": "Automotive Parts & Equipment"
+"sub": "Automotive Parts & Equipment",
+"added": "2012-12-24"
 },
 "ACGL": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "2022-11-01"
 },
 "ADM": {
 "s": "Consumer Staples",
-"sub": "Agricultural Products & Services"
+"sub": "Agricultural Products & Services",
+"added": "1957-03-04"
 },
 "ARES": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2025-12-11"
 },
 "ANET": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "2018-08-28"
 },
 "AJG": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "2016-05-31"
 },
 "AIZ": {
 "s": "Financials",
-"sub": "Multi-line Insurance"
+"sub": "Multi-line Insurance",
+"added": "2007-04-10"
 },
 "T": {
 "s": "Communication Services",
-"sub": "Integrated Telecommunication Services"
+"sub": "Integrated Telecommunication Services",
+"added": "1983-11-30"
 },
 "ATO": {
 "s": "Utilities",
-"sub": "Gas Utilities"
+"sub": "Gas Utilities",
+"added": "2019-02-15"
 },
 "ADSK": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "1989-12-01"
 },
 "ADP": {
 "s": "Industrials",
-"sub": "Human Resource & Employment Services"
+"sub": "Human Resource & Employment Services",
+"added": "1981-03-31"
 },
 "AZO": {
 "s": "Consumer Discretionary",
-"sub": "Automotive Retail"
+"sub": "Automotive Retail",
+"added": "1997-01-02"
 },
 "AVY": {
 "s": "Materials",
-"sub": "Paper & Plastic Packaging Products & Materials"
+"sub": "Paper & Plastic Packaging Products & Materials",
+"added": "1987-12-31"
 },
 "AXON": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2023-05-04"
 },
 "BKR": {
 "s": "Energy",
-"sub": "Oil & Gas Equipment & Services"
+"sub": "Oil & Gas Equipment & Services",
+"added": "2017-07-07"
 },
 "BALL": {
 "s": "Materials",
-"sub": "Metal, Glass & Plastic Containers"
+"sub": "Metal, Glass & Plastic Containers",
+"added": "1984-10-31"
 },
 "BAC": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1976-06-30"
 },
 "BAX": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1972-09-30"
 },
 "BDX": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1972-09-30"
 },
 "BRK.B": {
 "s": "Financials",
-"sub": "Multi-Sector Holdings"
+"sub": "Multi-Sector Holdings",
+"added": "2010-02-16"
 },
 "BBY": {
 "s": "Consumer Discretionary",
-"sub": "Computer & Electronics Retail"
+"sub": "Computer & Electronics Retail",
+"added": "1999-06-29"
 },
 "TECH": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2021-08-30"
 },
 "BIIB": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2003-11-13"
 },
 "BLK": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2011-04-04"
 },
 "BX": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2023-09-18"
 },
 "XYZ": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2025-07-23"
 },
 "BE": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "2026-09-21"
 },
 "BNY": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "1995-03-31"
 },
 "BA": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "BKNG": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2009-11-06"
 },
 "BSX": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1995-02-24"
 },
 "BMY": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "1957-03-04"
 },
 "AVGO": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2014-05-08"
 },
 "BR": {
 "s": "Industrials",
-"sub": "Data Processing & Outsourced Services"
+"sub": "Data Processing & Outsourced Services",
+"added": "2018-06-18"
 },
 "BRO": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "2021-09-20"
 },
 "BF.B": {
 "s": "Consumer Staples",
-"sub": "Distillers & Vintners"
+"sub": "Distillers & Vintners",
+"added": "1982-10-31"
 },
 "BG": {
 "s": "Consumer Staples",
-"sub": "Agricultural Products & Services"
+"sub": "Agricultural Products & Services",
+"added": "2023-03-15"
 },
 "BXP": {
 "s": "Real Estate",
-"sub": "Office REITs"
+"sub": "Office REITs",
+"added": "2006-04-03"
 },
 "CHRW": {
 "s": "Industrials",
-"sub": "Air Freight & Logistics"
+"sub": "Air Freight & Logistics",
+"added": "2007-03-02"
 },
 "CDNS": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2017-09-18"
 },
 "CPT": {
 "s": "Real Estate",
-"sub": "Multi-Family Residential REITs"
+"sub": "Multi-Family Residential REITs",
+"added": "2022-04-04"
 },
 "COF": {
 "s": "Financials",
-"sub": "Consumer Finance"
+"sub": "Consumer Finance",
+"added": "1998-07-01"
 },
 "CAH": {
 "s": "Health Care",
-"sub": "Health Care Distributors"
+"sub": "Health Care Distributors",
+"added": "1997-05-27"
 },
 "CCL": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "1998-12-22"
 },
 "CARR": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2020-04-03"
 },
 "CVNA": {
 "s": "Consumer Discretionary",
-"sub": "Automotive Retail"
+"sub": "Automotive Retail",
+"added": "2025-12-22"
 },
 "CASY": {
 "s": "Consumer Staples",
-"sub": "Food Retail"
+"sub": "Food Retail",
+"added": "2026-04-09"
 },
 "CAT": {
 "s": "Industrials",
-"sub": "Construction Machinery & Heavy Transportation Equipment"
+"sub": "Construction Machinery & Heavy Transportation Equipment",
+"added": "1957-03-04"
 },
 "CBOE": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2017-03-01"
 },
 "CBRE": {
 "s": "Real Estate",
-"sub": "Real Estate Services"
+"sub": "Real Estate Services",
+"added": "2006-11-10"
 },
 "CDW": {
 "s": "Information Technology",
-"sub": "Technology Distributors"
+"sub": "Technology Distributors",
+"added": "2019-09-23"
 },
 "COR": {
 "s": "Health Care",
-"sub": "Health Care Distributors"
+"sub": "Health Care Distributors",
+"added": "2001-08-30"
 },
 "CNC": {
 "s": "Health Care",
-"sub": "Managed Health Care"
+"sub": "Managed Health Care",
+"added": "2016-03-30"
 },
 "CNP": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1985-07-31"
 },
 "CF": {
 "s": "Materials",
-"sub": "Fertilizers & Agricultural Chemicals"
+"sub": "Fertilizers & Agricultural Chemicals",
+"added": "2008-08-27"
 },
 "CRL": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2021-05-14"
 },
 "SCHW": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "1997-06-02"
 },
 "CHTR": {
 "s": "Communication Services",
-"sub": "Cable & Satellite"
+"sub": "Cable & Satellite",
+"added": "2016-09-08"
 },
 "CVX": {
 "s": "Energy",
-"sub": "Integrated Oil & Gas"
+"sub": "Integrated Oil & Gas",
+"added": "1957-03-04"
 },
 "CMG": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "2011-04-28"
 },
 "CB": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "2010-07-15"
 },
 "CHD": {
 "s": "Consumer Staples",
-"sub": "Household Products"
+"sub": "Household Products",
+"added": "2015-12-29"
 },
 "CIEN": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "2026-02-09"
 },
 "CI": {
 "s": "Health Care",
-"sub": "Health Care Services"
+"sub": "Health Care Services",
+"added": "1976-06-30"
 },
 "CINF": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "1997-12-18"
 },
 "CTAS": {
 "s": "Industrials",
-"sub": "Diversified Support Services"
+"sub": "Diversified Support Services",
+"added": "2001-03-01"
 },
 "CSCO": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "1993-12-01"
 },
 "C": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1988-05-31"
 },
 "CFG": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "2016-01-29"
 },
 "CLX": {
 "s": "Consumer Staples",
-"sub": "Household Products"
+"sub": "Household Products",
+"added": "1969-03-31"
 },
 "CME": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2006-08-11"
 },
 "CMS": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1957-03-04"
 },
 "KO": {
 "s": "Consumer Staples",
-"sub": "Soft Drinks & Non-alcoholic Beverages"
+"sub": "Soft Drinks & Non-alcoholic Beverages",
+"added": "1957-03-04"
 },
 "CTSH": {
 "s": "Information Technology",
-"sub": "IT Consulting & Other Services"
+"sub": "IT Consulting & Other Services",
+"added": "2006-11-17"
 },
 "COHR": {
 "s": "Information Technology",
-"sub": "Electronic Components"
+"sub": "Electronic Components",
+"added": "2026-03-23"
 },
 "COIN": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2025-05-19"
 },
 "CL": {
 "s": "Consumer Staples",
-"sub": "Household Products"
+"sub": "Household Products",
+"added": "1957-03-04"
 },
 "CMCSA": {
 "s": "Communication Services",
-"sub": "Cable & Satellite"
+"sub": "Cable & Satellite",
+"added": "2002-11-19"
 },
 "FIX": {
 "s": "Industrials",
-"sub": "Construction & Engineering"
+"sub": "Construction & Engineering",
+"added": "2025-12-22"
 },
 "COP": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "1957-03-04"
 },
 "ED": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1957-03-04"
 },
 "STZ": {
 "s": "Consumer Staples",
-"sub": "Distillers & Vintners"
+"sub": "Distillers & Vintners",
+"added": "2005-07-01"
 },
 "CEG": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2022-02-02"
 },
 "COO": {
 "s": "Health Care",
-"sub": "Health Care Supplies"
+"sub": "Health Care Supplies",
+"added": "2016-09-23"
 },
 "CPRT": {
 "s": "Industrials",
-"sub": "Diversified Support Services"
+"sub": "Diversified Support Services",
+"added": "2018-07-02"
 },
 "GLW": {
 "s": "Information Technology",
-"sub": "Electronic Components"
+"sub": "Electronic Components",
+"added": "1995-02-27"
 },
 "CPAY": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2018-06-20"
 },
 "CSGP": {
 "s": "Real Estate",
-"sub": "Real Estate Services"
+"sub": "Real Estate Services",
+"added": "2022-09-19"
 },
 "COST": {
 "s": "Consumer Staples",
-"sub": "Consumer Staples Merchandise Retail"
+"sub": "Consumer Staples Merchandise Retail",
+"added": "1993-10-01"
 },
 "CRH": {
 "s": "Materials",
-"sub": "Construction Materials"
+"sub": "Construction Materials",
+"added": "2025-12-22"
 },
 "CRWD": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2024-06-24"
 },
 "CCI": {
 "s": "Real Estate",
-"sub": "Telecom Tower REITs"
+"sub": "Telecom Tower REITs",
+"added": "2012-03-14"
 },
 "CSX": {
 "s": "Industrials",
-"sub": "Rail Transportation"
+"sub": "Rail Transportation",
+"added": "1957-03-04"
 },
 "CMI": {
 "s": "Industrials",
-"sub": "Construction Machinery & Heavy Transportation Equipment"
+"sub": "Construction Machinery & Heavy Transportation Equipment",
+"added": "1965-03-31"
 },
 "CVS": {
 "s": "Health Care",
-"sub": "Health Care Services"
+"sub": "Health Care Services",
+"added": "1957-03-04"
 },
 "DHR": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "1998-11-18"
 },
 "DRI": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "1995-05-31"
 },
 "DDOG": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2025-07-09"
 },
 "DVA": {
 "s": "Health Care",
-"sub": "Health Care Services"
+"sub": "Health Care Services",
+"added": "2008-07-31"
 },
 "DECK": {
 "s": "Consumer Discretionary",
-"sub": "Footwear"
+"sub": "Footwear",
+"added": "2024-03-18"
 },
 "DE": {
 "s": "Industrials",
-"sub": "Agricultural & Farm Machinery"
+"sub": "Agricultural & Farm Machinery",
+"added": "1957-03-04"
 },
 "DELL": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2024-09-23"
 },
 "DAL": {
 "s": "Industrials",
-"sub": "Passenger Airlines"
+"sub": "Passenger Airlines",
+"added": "2013-09-11"
 },
 "DVN": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2000-08-30"
 },
 "DXCM": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2020-05-12"
 },
 "FANG": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2018-12-03"
 },
 "DLR": {
 "s": "Real Estate",
-"sub": "Data Center REITs"
+"sub": "Data Center REITs",
+"added": "2016-05-18"
 },
 "DG": {
 "s": "Consumer Staples",
-"sub": "Consumer Staples Merchandise Retail"
+"sub": "Consumer Staples Merchandise Retail",
+"added": "2012-12-03"
 },
 "DLTR": {
 "s": "Consumer Staples",
-"sub": "Consumer Staples Merchandise Retail"
+"sub": "Consumer Staples Merchandise Retail",
+"added": "2011-12-19"
 },
 "D": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "2016-11-30"
 },
 "DPZ": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "2020-05-12"
 },
 "DASH": {
 "s": "Consumer Discretionary",
-"sub": "Specialized Consumer Services"
+"sub": "Specialized Consumer Services",
+"added": "2025-03-24"
 },
 "DOV": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1985-10-31"
 },
 "DOW": {
 "s": "Materials",
-"sub": "Commodity Chemicals"
+"sub": "Commodity Chemicals",
+"added": "2019-04-01"
 },
 "DHI": {
 "s": "Consumer Discretionary",
-"sub": "Homebuilding"
+"sub": "Homebuilding",
+"added": "2005-06-22"
 },
 "DTE": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1957-03-04"
 },
 "DUK": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1976-06-30"
 },
 "DD": {
 "s": "Industrials",
-"sub": "Industrial Conglomerates"
+"sub": "Industrial Conglomerates",
+"added": "2019-06-03"
 },
 "ETN": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "1957-03-04"
 },
 "EBAY": {
 "s": "Consumer Discretionary",
-"sub": "Broadline Retail"
+"sub": "Broadline Retail",
+"added": "2002-07-22"
 },
 "ECHO": {
 "s": "Communication Services",
-"sub": "Wireless Telecommunication Services"
+"sub": "Wireless Telecommunication Services",
+"added": "2026-03-23"
 },
 "ECL": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "1989-01-31"
 },
 "EIX": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "EW": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2011-04-01"
 },
 "ELV": {
 "s": "Health Care",
-"sub": "Managed Health Care"
+"sub": "Managed Health Care",
+"added": "2002-07-25"
 },
 "EME": {
 "s": "Industrials",
-"sub": "Construction & Engineering"
+"sub": "Construction & Engineering",
+"added": "2025-09-22"
 },
 "EMR": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "1965-03-31"
 },
 "ETR": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "EOG": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2000-11-02"
 },
 "EQT": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2022-10-03"
 },
 "EFX": {
 "s": "Industrials",
-"sub": "Research & Consulting Services"
+"sub": "Research & Consulting Services",
+"added": "1997-06-19"
 },
 "EQIX": {
 "s": "Real Estate",
-"sub": "Data Center REITs"
+"sub": "Data Center REITs",
+"added": "2015-03-20"
 },
 "ERIE": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "2024-09-23"
 },
 "ESS": {
 "s": "Real Estate",
-"sub": "Multi-Family Residential REITs"
+"sub": "Multi-Family Residential REITs",
+"added": "2014-04-02"
 },
 "EL": {
 "s": "Consumer Staples",
-"sub": "Personal Care Products"
+"sub": "Personal Care Products",
+"added": "2006-01-05"
 },
 "EG": {
 "s": "Financials",
-"sub": "Reinsurance"
+"sub": "Reinsurance",
+"added": "2017-06-19"
 },
 "EVRG": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2018-06-05"
 },
 "P": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2026-09-21"
 },
 "ES": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2009-07-24"
 },
 "EXC": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "EXE": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2025-03-24"
 },
 "EXPE": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2007-10-02"
 },
 "EXPD": {
 "s": "Industrials",
-"sub": "Air Freight & Logistics"
+"sub": "Air Freight & Logistics",
+"added": "2007-10-10"
 },
 "EXR": {
 "s": "Real Estate",
-"sub": "Self-Storage REITs"
+"sub": "Self-Storage REITs",
+"added": "2016-01-19"
 },
 "XOM": {
 "s": "Energy",
-"sub": "Integrated Oil & Gas"
+"sub": "Integrated Oil & Gas",
+"added": "1957-03-04"
 },
 "FFIV": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "2010-12-20"
 },
 "FDS": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2021-12-20"
 },
 "FICO": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2023-03-20"
 },
 "FAST": {
 "s": "Industrials",
-"sub": "Trading Companies & Distributors"
+"sub": "Trading Companies & Distributors",
+"added": "2008-09-15"
 },
 "FRT": {
 "s": "Real Estate",
-"sub": "Retail REITs"
+"sub": "Retail REITs",
+"added": "2016-02-01"
 },
 "FDX": {
 "s": "Industrials",
-"sub": "Air Freight & Logistics"
+"sub": "Air Freight & Logistics",
+"added": "1980-12-31"
 },
 "FDXF": {
 "s": "Industrials",
-"sub": "Cargo Ground Transportation"
+"sub": "Cargo Ground Transportation",
+"added": "2026-06-01"
 },
 "FERG": {
 "s": "Industrials",
-"sub": "Trading Companies & Distributors"
+"sub": "Trading Companies & Distributors",
+"added": "2026-08-05"
 },
 "FIS": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2006-11-10"
 },
 "FITB": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "1996-03-29"
 },
 "FSLR": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2022-12-19"
 },
 "FE": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1997-11-28"
 },
 "FISV": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2001-04-02"
 },
 "FLEX": {
 "s": "Information Technology",
-"sub": "Electronic Manufacturing Services"
+"sub": "Electronic Manufacturing Services",
+"added": "2026-06-22"
 },
 "F": {
 "s": "Consumer Discretionary",
-"sub": "Automobile Manufacturers"
+"sub": "Automobile Manufacturers",
+"added": "1957-03-04"
 },
 "FTNT": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2018-10-11"
 },
 "FTV": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2016-07-01"
 },
 "FOXA": {
 "s": "Communication Services",
-"sub": "Broadcasting"
+"sub": "Broadcasting",
+"added": "2019-03-19"
 },
 "FOX": {
 "s": "Communication Services",
-"sub": "Broadcasting"
+"sub": "Broadcasting",
+"added": "2019-03-19"
 },
 "BEN": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "1998-04-30"
 },
 "FCX": {
 "s": "Materials",
-"sub": "Copper"
+"sub": "Copper",
+"added": "2011-07-01"
 },
 "GRMN": {
 "s": "Consumer Discretionary",
-"sub": "Consumer Electronics"
+"sub": "Consumer Electronics",
+"added": "2012-12-12"
 },
 "IT": {
 "s": "Information Technology",
-"sub": "IT Consulting & Other Services"
+"sub": "IT Consulting & Other Services",
+"added": "2017-04-05"
 },
 "GE": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "GEHC": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2023-01-04"
 },
 "GEV": {
 "s": "Industrials",
-"sub": "Heavy Electrical Equipment"
+"sub": "Heavy Electrical Equipment",
+"added": "2024-04-02"
 },
 "GEN": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2003-03-25"
 },
 "GNRC": {
 "s": "Industrials",
-"sub": "Heavy Electrical Equipment"
+"sub": "Heavy Electrical Equipment",
+"added": "2021-03-22"
 },
 "GD": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "GIS": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "1957-03-04"
 },
 "GM": {
 "s": "Consumer Discretionary",
-"sub": "Automobile Manufacturers"
+"sub": "Automobile Manufacturers",
+"added": "2013-06-06"
 },
 "GPC": {
 "s": "Consumer Discretionary",
-"sub": "Distributors"
+"sub": "Distributors",
+"added": "1973-12-31"
 },
 "GILD": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2004-07-01"
 },
 "GPN": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2016-04-25"
 },
 "GL": {
 "s": "Financials",
-"sub": "Life & Health Insurance"
+"sub": "Life & Health Insurance",
+"added": "1989-04-30"
 },
 "GDDY": {
 "s": "Information Technology",
-"sub": "Internet Services & Infrastructure"
+"sub": "Internet Services & Infrastructure",
+"added": "2024-06-24"
 },
 "GS": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "2002-07-22"
 },
 "HAL": {
 "s": "Energy",
-"sub": "Oil & Gas Equipment & Services"
+"sub": "Oil & Gas Equipment & Services",
+"added": "1957-03-04"
 },
 "HIG": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "1957-03-04"
 },
 "HAS": {
 "s": "Consumer Discretionary",
-"sub": "Leisure Products"
+"sub": "Leisure Products",
+"added": "1984-09-30"
 },
 "HCA": {
 "s": "Health Care",
-"sub": "Health Care Facilities"
+"sub": "Health Care Facilities",
+"added": "2015-01-27"
 },
 "DOC": {
 "s": "Real Estate",
-"sub": "Health Care REITs"
+"sub": "Health Care REITs",
+"added": "2008-03-31"
 },
 "HSIC": {
 "s": "Health Care",
-"sub": "Health Care Distributors"
+"sub": "Health Care Distributors",
+"added": "2015-03-17"
 },
 "HSY": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "1957-03-04"
 },
 "HPE": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2015-11-02"
 },
 "HLT": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2017-06-19"
 },
 "HD": {
 "s": "Consumer Discretionary",
-"sub": "Home Improvement Retail"
+"sub": "Home Improvement Retail",
+"added": "1988-03-31"
 },
 "HONA": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2026-06-29"
 },
 "HON": {
 "s": "Industrials",
-"sub": "Industrial Conglomerates"
+"sub": "Industrial Conglomerates",
+"added": "1957-03-04"
 },
 "HRL": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2009-03-04"
 },
 "HST": {
 "s": "Real Estate",
-"sub": "Hotel & Resort REITs"
+"sub": "Hotel & Resort REITs",
+"added": "2007-03-20"
 },
 "HWM": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2016-10-21"
 },
 "HPQ": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "1974-12-31"
 },
 "HUBB": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2023-10-18"
 },
 "HUM": {
 "s": "Health Care",
-"sub": "Managed Health Care"
+"sub": "Managed Health Care",
+"added": "2012-12-10"
 },
 "HBAN": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "1997-08-28"
 },
 "HII": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2018-01-03"
 },
 "IBM": {
 "s": "Information Technology",
-"sub": "IT Consulting & Other Services"
+"sub": "IT Consulting & Other Services",
+"added": "1957-03-04"
 },
 "IEX": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2019-08-09"
 },
 "IDXX": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2017-01-05"
 },
 "ITW": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1986-02-28"
 },
 "ILMN": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2026-09-21"
 },
 "INCY": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2017-02-28"
 },
 "IR": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2020-03-03"
 },
 "PODD": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2023-03-15"
 },
 "INTC": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "1976-12-31"
 },
 "IBKR": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "2025-08-28"
 },
 "ICE": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2007-09-26"
 },
 "IFF": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "1976-03-31"
 },
 "IP": {
 "s": "Materials",
-"sub": "Paper & Plastic Packaging Products & Materials"
+"sub": "Paper & Plastic Packaging Products & Materials",
+"added": "1957-03-04"
 },
 "INTU": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2000-12-05"
 },
 "ISRG": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2008-06-02"
 },
 "IVZ": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2008-08-21"
 },
 "INVH": {
 "s": "Real Estate",
-"sub": "Single-Family Residential REITs"
+"sub": "Single-Family Residential REITs",
+"added": "2022-09-19"
 },
 "IQV": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2017-08-29"
 },
 "IRM": {
 "s": "Real Estate",
-"sub": "Other Specialized REITs"
+"sub": "Other Specialized REITs",
+"added": "2009-01-06"
 },
 "JBHT": {
 "s": "Industrials",
-"sub": "Cargo Ground Transportation"
+"sub": "Cargo Ground Transportation",
+"added": "2015-07-01"
 },
 "JBL": {
 "s": "Information Technology",
-"sub": "Electronic Manufacturing Services"
+"sub": "Electronic Manufacturing Services",
+"added": "2023-12-18"
 },
 "JKHY": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2018-11-13"
 },
 "J": {
 "s": "Industrials",
-"sub": "Construction & Engineering"
+"sub": "Construction & Engineering",
+"added": "2007-10-26"
 },
 "JNJ": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "1973-06-30"
 },
 "JCI": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2010-08-27"
 },
 "JPM": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1975-06-30"
 },
 "KDP": {
 "s": "Consumer Staples",
-"sub": "Soft Drinks & Non-alcoholic Beverages"
+"sub": "Soft Drinks & Non-alcoholic Beverages",
+"added": "2022-06-21"
 },
 "KEY": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "1994-03-01"
 },
 "KEYS": {
 "s": "Information Technology",
-"sub": "Electronic Equipment & Instruments"
+"sub": "Electronic Equipment & Instruments",
+"added": "2018-11-06"
 },
 "KMB": {
 "s": "Consumer Staples",
-"sub": "Household Products"
+"sub": "Household Products",
+"added": "1957-03-04"
 },
 "KIM": {
 "s": "Real Estate",
-"sub": "Retail REITs"
+"sub": "Retail REITs",
+"added": "2006-04-04"
 },
 "KMI": {
 "s": "Energy",
-"sub": "Oil & Gas Storage & Transportation"
+"sub": "Oil & Gas Storage & Transportation",
+"added": "2012-05-25"
 },
 "KKR": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2024-06-24"
 },
 "KLAC": {
 "s": "Information Technology",
-"sub": "Semiconductor Materials & Equipment"
+"sub": "Semiconductor Materials & Equipment",
+"added": "1997-09-30"
 },
 "KHC": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2015-07-06"
 },
 "KR": {
 "s": "Consumer Staples",
-"sub": "Food Retail"
+"sub": "Food Retail",
+"added": "1957-03-04"
 },
 "LHX": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2008-09-22"
 },
 "LH": {
 "s": "Health Care",
-"sub": "Health Care Services"
+"sub": "Health Care Services",
+"added": "2004-11-01"
 },
 "LRCX": {
 "s": "Information Technology",
-"sub": "Semiconductor Materials & Equipment"
+"sub": "Semiconductor Materials & Equipment",
+"added": "2012-06-29"
 },
 "LVS": {
 "s": "Consumer Discretionary",
-"sub": "Casinos & Gaming"
+"sub": "Casinos & Gaming",
+"added": "2019-10-03"
 },
 "LDOS": {
 "s": "Industrials",
-"sub": "Diversified Support Services"
+"sub": "Diversified Support Services",
+"added": "2019-08-09"
 },
 "LEN": {
 "s": "Consumer Discretionary",
-"sub": "Homebuilding"
+"sub": "Homebuilding",
+"added": "2005-10-04"
 },
 "LII": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2024-12-23"
 },
 "LLY": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "1970-12-31"
 },
 "LIN": {
 "s": "Materials",
-"sub": "Industrial Gases"
+"sub": "Industrial Gases",
+"added": "1992-07-01"
 },
 "LYV": {
 "s": "Communication Services",
-"sub": "Movies & Entertainment"
+"sub": "Movies & Entertainment",
+"added": "2019-12-23"
 },
 "LMT": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "L": {
 "s": "Financials",
-"sub": "Multi-line Insurance"
+"sub": "Multi-line Insurance",
+"added": "1995-05-31"
 },
 "LOW": {
 "s": "Consumer Discretionary",
-"sub": "Home Improvement Retail"
+"sub": "Home Improvement Retail",
+"added": "1984-02-29"
 },
 "LULU": {
 "s": "Consumer Discretionary",
-"sub": "Apparel, Accessories & Luxury Goods"
+"sub": "Apparel, Accessories & Luxury Goods",
+"added": "2023-10-18"
 },
 "LITE": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "2026-03-23"
 },
 "LYB": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "2012-09-05"
 },
 "MTB": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "2004-02-23"
 },
 "MPC": {
 "s": "Energy",
-"sub": "Oil & Gas Refining & Marketing"
+"sub": "Oil & Gas Refining & Marketing",
+"added": "2011-07-01"
 },
 "MAR": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "1998-05-29"
 },
 "MRSH": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "1987-08-31"
 },
 "MLM": {
 "s": "Materials",
-"sub": "Construction Materials"
+"sub": "Construction Materials",
+"added": "2014-07-02"
 },
 "MRVL": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2026-06-22"
 },
 "MAS": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "1981-06-30"
 },
 "MA": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2008-07-18"
 },
 "MKC": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2003-03-20"
 },
 "MCD": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "1970-06-30"
 },
 "MCK": {
 "s": "Health Care",
-"sub": "Health Care Distributors"
+"sub": "Health Care Distributors",
+"added": "1999-01-13"
 },
 "MDT": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1986-10-31"
 },
 "MRK": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "1957-03-04"
 },
 "META": {
 "s": "Communication Services",
-"sub": "Interactive Media & Services"
+"sub": "Interactive Media & Services",
+"added": "2013-12-23"
 },
 "MET": {
 "s": "Financials",
-"sub": "Life & Health Insurance"
+"sub": "Life & Health Insurance",
+"added": "2000-12-11"
 },
 "MTD": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2016-09-06"
 },
 "MGM": {
 "s": "Consumer Discretionary",
-"sub": "Casinos & Gaming"
+"sub": "Casinos & Gaming",
+"added": "2017-07-26"
 },
 "MCHP": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2007-09-07"
 },
 "MU": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "1994-09-27"
 },
 "MSFT": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "1994-06-01"
 },
 "MAA": {
 "s": "Real Estate",
-"sub": "Multi-Family Residential REITs"
+"sub": "Multi-Family Residential REITs",
+"added": "2016-12-02"
 },
 "MRNA": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2021-07-21"
 },
 "MDLZ": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2012-10-02"
 },
 "MPWR": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2021-02-12"
 },
 "MNST": {
 "s": "Consumer Staples",
-"sub": "Soft Drinks & Non-alcoholic Beverages"
+"sub": "Soft Drinks & Non-alcoholic Beverages",
+"added": "2012-06-28"
 },
 "MCO": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "1998-07-01"
 },
 "MS": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "1993-07-29"
 },
 "MOS": {
 "s": "Materials",
-"sub": "Fertilizers & Agricultural Chemicals"
+"sub": "Fertilizers & Agricultural Chemicals",
+"added": "2011-09-26"
 },
 "MSI": {
 "s": "Information Technology",
-"sub": "Communications Equipment"
+"sub": "Communications Equipment",
+"added": "1957-03-04"
 },
 "MSCI": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2018-04-04"
 },
 "NDAQ": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "2008-10-22"
 },
 "NTAP": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "1999-06-25"
 },
 "NFLX": {
 "s": "Communication Services",
-"sub": "Movies & Entertainment"
+"sub": "Movies & Entertainment",
+"added": "2010-12-20"
 },
 "NEM": {
 "s": "Materials",
-"sub": "Gold"
+"sub": "Gold",
+"added": "1969-06-30"
 },
 "NWSA": {
 "s": "Communication Services",
-"sub": "Publishing"
+"sub": "Publishing",
+"added": "2013-08-01"
 },
 "NWS": {
 "s": "Communication Services",
-"sub": "Publishing"
+"sub": "Publishing",
+"added": "2015-09-18"
 },
 "NEE": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1976-06-30"
 },
 "NKE": {
 "s": "Consumer Discretionary",
-"sub": "Apparel, Accessories & Luxury Goods"
+"sub": "Apparel, Accessories & Luxury Goods",
+"added": "1988-11-30"
 },
 "NI": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "2000-11-02"
 },
 "NDSN": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2022-02-15"
 },
 "NSC": {
 "s": "Industrials",
-"sub": "Rail Transportation"
+"sub": "Rail Transportation",
+"added": "1957-03-04"
 },
 "NTRS": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "1998-01-30"
 },
 "NOC": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "NCLH": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2017-10-13"
 },
 "NRG": {
 "s": "Utilities",
-"sub": "Independent Power Producers & Energy Traders"
+"sub": "Independent Power Producers & Energy Traders",
+"added": "2010-01-29"
 },
 "NUE": {
 "s": "Materials",
-"sub": "Steel"
+"sub": "Steel",
+"added": "1985-04-30"
 },
 "NVDA": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2001-11-30"
 },
 "NVR": {
 "s": "Consumer Discretionary",
-"sub": "Homebuilding"
+"sub": "Homebuilding",
+"added": "2019-09-26"
 },
 "NXPI": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2021-03-22"
 },
 "ORLY": {
 "s": "Consumer Discretionary",
-"sub": "Automotive Retail"
+"sub": "Automotive Retail",
+"added": "2009-03-27"
 },
 "OXY": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "1957-03-04"
 },
 "OKTA": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2026-11-04"
 },
 "ODFL": {
 "s": "Industrials",
-"sub": "Cargo Ground Transportation"
+"sub": "Cargo Ground Transportation",
+"added": "2019-12-09"
 },
 "OMC": {
 "s": "Communication Services",
-"sub": "Advertising"
+"sub": "Advertising",
+"added": "1997-12-31"
 },
 "ON": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2022-06-21"
 },
 "OKE": {
 "s": "Energy",
-"sub": "Oil & Gas Storage & Transportation"
+"sub": "Oil & Gas Storage & Transportation",
+"added": "2010-03-15"
 },
 "ORCL": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "1989-08-31"
 },
 "OTIS": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2020-04-03"
 },
 "PCAR": {
 "s": "Industrials",
-"sub": "Construction Machinery & Heavy Transportation Equipment"
+"sub": "Construction Machinery & Heavy Transportation Equipment",
+"added": "1980-12-31"
 },
 "PKG": {
 "s": "Materials",
-"sub": "Paper & Plastic Packaging Products & Materials"
+"sub": "Paper & Plastic Packaging Products & Materials",
+"added": "2017-07-26"
 },
 "PLTR": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2024-09-23"
 },
 "PANW": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2023-06-20"
 },
 "PH": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1985-11-30"
 },
 "PAYX": {
 "s": "Industrials",
-"sub": "Human Resource & Employment Services"
+"sub": "Human Resource & Employment Services",
+"added": "1998-10-01"
 },
 "PYPL": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2015-07-20"
 },
 "PNR": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2012-10-01"
 },
 "PEP": {
 "s": "Consumer Staples",
-"sub": "Soft Drinks & Non-alcoholic Beverages"
+"sub": "Soft Drinks & Non-alcoholic Beverages",
+"added": "1957-03-04"
 },
 "PFE": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "1957-03-04"
 },
 "PCG": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "2022-10-03"
 },
 "PM": {
 "s": "Consumer Staples",
-"sub": "Tobacco"
+"sub": "Tobacco",
+"added": "2008-03-31"
 },
 "PSX": {
 "s": "Energy",
-"sub": "Oil & Gas Refining & Marketing"
+"sub": "Oil & Gas Refining & Marketing",
+"added": "2012-05-01"
 },
 "PNW": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1999-10-04"
 },
 "PNC": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1988-04-30"
 },
 "PPG": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "1957-03-04"
 },
 "PPL": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2001-10-01"
 },
 "PFG": {
 "s": "Financials",
-"sub": "Life & Health Insurance"
+"sub": "Life & Health Insurance",
+"added": "2002-07-22"
 },
 "PG": {
 "s": "Consumer Staples",
-"sub": "Personal Care Products"
+"sub": "Personal Care Products",
+"added": "1957-03-04"
 },
 "PGR": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "1997-08-04"
 },
 "PLD": {
 "s": "Real Estate",
-"sub": "Industrial REITs"
+"sub": "Industrial REITs",
+"added": "2003-07-17"
 },
 "PRU": {
 "s": "Financials",
-"sub": "Life & Health Insurance"
+"sub": "Life & Health Insurance",
+"added": "2002-07-22"
 },
 "PTC": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2021-04-20"
 },
 "PEG": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "PSA": {
 "s": "Real Estate",
-"sub": "Self-Storage REITs"
+"sub": "Self-Storage REITs",
+"added": "2005-08-19"
 },
 "PHM": {
 "s": "Consumer Discretionary",
-"sub": "Homebuilding"
+"sub": "Homebuilding",
+"added": "1984-04-30"
 },
 "Q": {
 "s": "Information Technology",
-"sub": "Semiconductor Materials & Equipment"
+"sub": "Semiconductor Materials & Equipment",
+"added": "2025-11-03"
 },
 "QCOM": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "1999-07-22"
 },
 "PWR": {
 "s": "Industrials",
-"sub": "Construction & Engineering"
+"sub": "Construction & Engineering",
+"added": "2009-07-01"
 },
 "DGX": {
 "s": "Health Care",
-"sub": "Health Care Services"
+"sub": "Health Care Services",
+"added": "2002-12-12"
 },
 "RL": {
 "s": "Consumer Discretionary",
-"sub": "Apparel, Accessories & Luxury Goods"
+"sub": "Apparel, Accessories & Luxury Goods",
+"added": "2007-02-02"
 },
 "RJF": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "2017-03-20"
 },
 "RDDT": {
 "s": "Communication Services",
-"sub": "Interactive Media & Services"
+"sub": "Interactive Media & Services",
+"added": "2026-08-18"
 },
 "O": {
 "s": "Real Estate",
-"sub": "Retail REITs"
+"sub": "Retail REITs",
+"added": "2015-04-07"
 },
 "REG": {
 "s": "Real Estate",
-"sub": "Retail REITs"
+"sub": "Retail REITs",
+"added": "2017-03-02"
 },
 "REGN": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2013-05-01"
 },
 "RF": {
 "s": "Financials",
-"sub": "Regional Banks"
+"sub": "Regional Banks",
+"added": "1998-08-28"
 },
 "RSG": {
 "s": "Industrials",
-"sub": "Environmental & Facilities Services"
+"sub": "Environmental & Facilities Services",
+"added": "2008-12-05"
 },
 "RMD": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2017-07-26"
 },
 "RVTY": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "1985-05-31"
 },
 "HOOD": {
 "s": "Financials",
-"sub": "Investment Banking & Brokerage"
+"sub": "Investment Banking & Brokerage",
+"added": "2025-09-22"
 },
 "ROK": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "2000-03-12"
 },
 "ROL": {
 "s": "Industrials",
-"sub": "Environmental & Facilities Services"
+"sub": "Environmental & Facilities Services",
+"added": "2018-10-01"
 },
 "ROP": {
 "s": "Information Technology",
-"sub": "Electronic Equipment & Instruments"
+"sub": "Electronic Equipment & Instruments",
+"added": "2009-12-23"
 },
 "ROST": {
 "s": "Consumer Discretionary",
-"sub": "Apparel Retail"
+"sub": "Apparel Retail",
+"added": "2009-12-21"
 },
 "RCL": {
 "s": "Consumer Discretionary",
-"sub": "Hotels, Resorts & Cruise Lines"
+"sub": "Hotels, Resorts & Cruise Lines",
+"added": "2014-12-05"
 },
 "RTX": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1957-03-04"
 },
 "SPGI": {
 "s": "Financials",
-"sub": "Financial Exchanges & Data"
+"sub": "Financial Exchanges & Data",
+"added": "1957-03-04"
 },
 "CRM": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2008-09-15"
 },
 "SNDK": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2025-11-28"
 },
 "SBAC": {
 "s": "Real Estate",
-"sub": "Telecom Tower REITs"
+"sub": "Telecom Tower REITs",
+"added": "2017-09-01"
 },
 "SLB": {
 "s": "Energy",
-"sub": "Oil & Gas Equipment & Services"
+"sub": "Oil & Gas Equipment & Services",
+"added": "1957-03-04"
 },
 "STX": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2012-07-02"
 },
 "SRE": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "2017-03-17"
 },
 "NOW": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2019-11-21"
 },
 "SHW": {
 "s": "Materials",
-"sub": "Specialty Chemicals"
+"sub": "Specialty Chemicals",
+"added": "1964-06-30"
 },
 "SPG": {
 "s": "Real Estate",
-"sub": "Retail REITs"
+"sub": "Retail REITs",
+"added": "2002-06-26"
 },
 "SKYD": {
 "s": "Communication Services",
-"sub": "Movies & Entertainment"
+"sub": "Movies & Entertainment",
+"added": "1994-09-30"
 },
 "SWKS": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2015-03-12"
 },
 "SJM": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2008-11-06"
 },
 "SW": {
 "s": "Materials",
-"sub": "Paper & Plastic Packaging Products & Materials"
+"sub": "Paper & Plastic Packaging Products & Materials",
+"added": "2024-07-08"
 },
 "SNA": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1982-09-30"
 },
 "SOLV": {
 "s": "Health Care",
-"sub": "Health Care Technology"
+"sub": "Health Care Technology",
+"added": "2024-04-01"
 },
 "SO": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "1957-03-04"
 },
 "LUV": {
 "s": "Industrials",
-"sub": "Passenger Airlines"
+"sub": "Passenger Airlines",
+"added": "1994-07-01"
 },
 "SWK": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1982-09-30"
 },
 "SBUX": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "2000-06-07"
 },
 "STT": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2003-03-14"
 },
 "STLD": {
 "s": "Materials",
-"sub": "Steel"
+"sub": "Steel",
+"added": "2022-12-22"
 },
 "STE": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2019-12-23"
 },
 "SYK": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2000-12-12"
 },
 "SMCI": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2024-03-18"
 },
 "SYF": {
 "s": "Financials",
-"sub": "Consumer Finance"
+"sub": "Consumer Finance",
+"added": "2015-11-18"
 },
 "SNPS": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2017-03-16"
 },
 "SYY": {
 "s": "Consumer Staples",
-"sub": "Food Distributors"
+"sub": "Food Distributors",
+"added": "1986-12-31"
 },
 "TMUS": {
 "s": "Communication Services",
-"sub": "Wireless Telecommunication Services"
+"sub": "Wireless Telecommunication Services",
+"added": "2019-07-15"
 },
 "TROW": {
 "s": "Financials",
-"sub": "Asset Management & Custody Banks"
+"sub": "Asset Management & Custody Banks",
+"added": "2019-07-29"
 },
 "TTWO": {
 "s": "Communication Services",
-"sub": "Interactive Home Entertainment"
+"sub": "Interactive Home Entertainment",
+"added": "2018-03-19"
 },
 "TPR": {
 "s": "Consumer Discretionary",
-"sub": "Apparel, Accessories & Luxury Goods"
+"sub": "Apparel, Accessories & Luxury Goods",
+"added": "2004-09-01"
 },
 "TRGP": {
 "s": "Energy",
-"sub": "Oil & Gas Storage & Transportation"
+"sub": "Oil & Gas Storage & Transportation",
+"added": "2022-10-12"
 },
 "TGT": {
 "s": "Consumer Staples",
-"sub": "Consumer Staples Merchandise Retail"
+"sub": "Consumer Staples Merchandise Retail",
+"added": "1976-12-31"
 },
 "TEL": {
 "s": "Information Technology",
-"sub": "Electronic Manufacturing Services"
+"sub": "Electronic Manufacturing Services",
+"added": "2011-10-17"
 },
 "TDY": {
 "s": "Information Technology",
-"sub": "Electronic Equipment & Instruments"
+"sub": "Electronic Equipment & Instruments",
+"added": "2020-06-22"
 },
 "TER": {
 "s": "Information Technology",
-"sub": "Semiconductor Materials & Equipment"
+"sub": "Semiconductor Materials & Equipment",
+"added": "2020-09-21"
 },
 "TSLA": {
 "s": "Consumer Discretionary",
-"sub": "Automobile Manufacturers"
+"sub": "Automobile Manufacturers",
+"added": "2020-12-21"
 },
 "TXN": {
 "s": "Information Technology",
-"sub": "Semiconductors"
+"sub": "Semiconductors",
+"added": "2001-03-12"
 },
 "TPL": {
 "s": "Energy",
-"sub": "Oil & Gas Exploration & Production"
+"sub": "Oil & Gas Exploration & Production",
+"added": "2024-11-26"
 },
 "TXT": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "1978-12-31"
 },
 "TMO": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2004-08-03"
 },
 "TJX": {
 "s": "Consumer Discretionary",
-"sub": "Apparel Retail"
+"sub": "Apparel Retail",
+"added": "1985-09-30"
 },
 "TKO": {
 "s": "Communication Services",
-"sub": "Movies & Entertainment"
+"sub": "Movies & Entertainment",
+"added": "2025-03-24"
 },
 "TSCO": {
 "s": "Consumer Discretionary",
-"sub": "Other Specialty Retail"
+"sub": "Other Specialty Retail",
+"added": "2014-01-24"
 },
 "TT": {
 "s": "Industrials",
-"sub": "Building Products"
+"sub": "Building Products",
+"added": "2010-11-17"
 },
 "TDG": {
 "s": "Industrials",
-"sub": "Aerospace & Defense"
+"sub": "Aerospace & Defense",
+"added": "2016-06-03"
 },
 "TRV": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "2002-08-21"
 },
 "TRMB": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2021-01-21"
 },
 "TFC": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1997-12-04"
 },
 "TWLO": {
 "s": "Information Technology",
-"sub": "Systems Software"
+"sub": "Systems Software",
+"added": "2026-10-06"
 },
 "TYL": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2020-06-22"
 },
 "TSN": {
 "s": "Consumer Staples",
-"sub": "Packaged Foods & Meats"
+"sub": "Packaged Foods & Meats",
+"added": "2005-08-10"
 },
 "USB": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1999-11-01"
 },
 "UBER": {
 "s": "Industrials",
-"sub": "Passenger Ground Transportation"
+"sub": "Passenger Ground Transportation",
+"added": "2023-12-18"
 },
 "UDR": {
 "s": "Real Estate",
-"sub": "Multi-Family Residential REITs"
+"sub": "Multi-Family Residential REITs",
+"added": "2016-03-07"
 },
 "ULTA": {
 "s": "Consumer Discretionary",
-"sub": "Other Specialty Retail"
+"sub": "Other Specialty Retail",
+"added": "2016-04-18"
 },
 "UNP": {
 "s": "Industrials",
-"sub": "Rail Transportation"
+"sub": "Rail Transportation",
+"added": "1957-03-04"
 },
 "UAL": {
 "s": "Industrials",
-"sub": "Passenger Airlines"
+"sub": "Passenger Airlines",
+"added": "2015-09-03"
 },
 "UPS": {
 "s": "Industrials",
-"sub": "Air Freight & Logistics"
+"sub": "Air Freight & Logistics",
+"added": "2002-07-22"
 },
 "URI": {
 "s": "Industrials",
-"sub": "Trading Companies & Distributors"
+"sub": "Trading Companies & Distributors",
+"added": "2014-09-20"
 },
 "UNH": {
 "s": "Health Care",
-"sub": "Managed Health Care"
+"sub": "Managed Health Care",
+"added": "1994-07-01"
 },
 "UHS": {
 "s": "Health Care",
-"sub": "Health Care Facilities"
+"sub": "Health Care Facilities",
+"added": "2014-09-20"
 },
 "VLO": {
 "s": "Energy",
-"sub": "Oil & Gas Refining & Marketing"
+"sub": "Oil & Gas Refining & Marketing",
+"added": "2002-12-20"
 },
 "VEEV": {
 "s": "Health Care",
-"sub": "Health Care Technology"
+"sub": "Health Care Technology",
+"added": "2026-05-07"
 },
 "VTR": {
 "s": "Real Estate",
-"sub": "Health Care REITs"
+"sub": "Health Care REITs",
+"added": "2009-03-04"
 },
 "VLTO": {
 "s": "Industrials",
-"sub": "Environmental & Facilities Services"
+"sub": "Environmental & Facilities Services",
+"added": "2023-10-02"
 },
 "VRSN": {
 "s": "Information Technology",
-"sub": "Internet Services & Infrastructure"
+"sub": "Internet Services & Infrastructure",
+"added": "2006-02-01"
 },
 "VRSK": {
 "s": "Industrials",
-"sub": "Research & Consulting Services"
+"sub": "Research & Consulting Services",
+"added": "2015-10-08"
 },
 "VZ": {
 "s": "Communication Services",
-"sub": "Integrated Telecommunication Services"
+"sub": "Integrated Telecommunication Services",
+"added": "1983-11-30"
 },
 "VRTX": {
 "s": "Health Care",
-"sub": "Biotechnology"
+"sub": "Biotechnology",
+"added": "2013-09-23"
 },
 "VRT": {
 "s": "Industrials",
-"sub": "Electrical Components & Equipment"
+"sub": "Electrical Components & Equipment",
+"added": "2026-03-23"
 },
 "VTRS": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "2004-04-23"
 },
 "VICI": {
 "s": "Real Estate",
-"sub": "Hotel & Resort REITs"
+"sub": "Hotel & Resort REITs",
+"added": "2022-06-08"
 },
 "V": {
 "s": "Financials",
-"sub": "Transaction & Payment Processing Services"
+"sub": "Transaction & Payment Processing Services",
+"added": "2009-12-21"
 },
 "VST": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2024-05-08"
 },
 "VMRK": {
 "s": "Real Estate",
-"sub": "Multi-Family Residential REITs"
+"sub": "Multi-Family Residential REITs",
+"added": "2001-12-03"
 },
 "VMC": {
 "s": "Materials",
-"sub": "Construction Materials"
+"sub": "Construction Materials",
+"added": "1999-06-30"
 },
 "VYLR": {
 "s": "Consumer Staples",
-"sub": "Agricultural Products & Services"
+"sub": "Agricultural Products & Services",
+"added": "2026-10-01"
 },
 "WRB": {
 "s": "Financials",
-"sub": "Property & Casualty Insurance"
+"sub": "Property & Casualty Insurance",
+"added": "2019-12-05"
 },
 "GWW": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "1981-06-30"
 },
 "WAB": {
 "s": "Industrials",
-"sub": "Construction Machinery & Heavy Transportation Equipment"
+"sub": "Construction Machinery & Heavy Transportation Equipment",
+"added": "2019-02-27"
 },
 "WMT": {
 "s": "Consumer Staples",
-"sub": "Consumer Staples Merchandise Retail"
+"sub": "Consumer Staples Merchandise Retail",
+"added": "1982-08-31"
 },
 "DIS": {
 "s": "Communication Services",
-"sub": "Movies & Entertainment"
+"sub": "Movies & Entertainment",
+"added": "1976-06-30"
 },
 "WM": {
 "s": "Industrials",
-"sub": "Environmental & Facilities Services"
+"sub": "Environmental & Facilities Services",
+"added": "1998-08-31"
 },
 "WAT": {
 "s": "Health Care",
-"sub": "Life Sciences Tools & Services"
+"sub": "Life Sciences Tools & Services",
+"added": "2002-01-02"
 },
 "WEC": {
 "s": "Utilities",
-"sub": "Electric Utilities"
+"sub": "Electric Utilities",
+"added": "2008-10-31"
 },
 "WFC": {
 "s": "Financials",
-"sub": "Diversified Banks"
+"sub": "Diversified Banks",
+"added": "1976-06-30"
 },
 "WELL": {
 "s": "Real Estate",
-"sub": "Health Care REITs"
+"sub": "Health Care REITs",
+"added": "2009-01-30"
 },
 "WST": {
 "s": "Health Care",
-"sub": "Health Care Supplies"
+"sub": "Health Care Supplies",
+"added": "2020-05-22"
 },
 "WDC": {
 "s": "Information Technology",
-"sub": "Technology Hardware, Storage & Peripherals"
+"sub": "Technology Hardware, Storage & Peripherals",
+"added": "2009-07-01"
 },
 "WY": {
 "s": "Real Estate",
-"sub": "Timber REITs"
+"sub": "Timber REITs",
+"added": "1979-10-01"
 },
 "WSM": {
 "s": "Consumer Discretionary",
-"sub": "Homefurnishing Retail"
+"sub": "Homefurnishing Retail",
+"added": "2025-03-24"
 },
 "WMB": {
 "s": "Energy",
-"sub": "Oil & Gas Storage & Transportation"
+"sub": "Oil & Gas Storage & Transportation",
+"added": "1975-03-31"
 },
 "WTW": {
 "s": "Financials",
-"sub": "Insurance Brokers"
+"sub": "Insurance Brokers",
+"added": "2016-01-05"
 },
 "WDAY": {
 "s": "Information Technology",
-"sub": "Application Software"
+"sub": "Application Software",
+"added": "2024-12-23"
 },
 "WYNN": {
 "s": "Consumer Discretionary",
-"sub": "Casinos & Gaming"
+"sub": "Casinos & Gaming",
+"added": "2008-11-14"
 },
 "XEL": {
 "s": "Utilities",
-"sub": "Multi-Utilities"
+"sub": "Multi-Utilities",
+"added": "1957-03-04"
 },
 "XYL": {
 "s": "Industrials",
-"sub": "Industrial Machinery & Supplies & Components"
+"sub": "Industrial Machinery & Supplies & Components",
+"added": "2011-11-01"
 },
 "YUM": {
 "s": "Consumer Discretionary",
-"sub": "Restaurants"
+"sub": "Restaurants",
+"added": "1997-10-06"
 },
 "ZBRA": {
 "s": "Information Technology",
-"sub": "Electronic Equipment & Instruments"
+"sub": "Electronic Equipment & Instruments",
+"added": "2019-12-23"
 },
 "ZBH": {
 "s": "Health Care",
-"sub": "Health Care Equipment"
+"sub": "Health Care Equipment",
+"added": "2001-08-07"
 },
 "ZTS": {
 "s": "Health Care",
-"sub": "Pharmaceuticals"
+"sub": "Pharmaceuticals",
+"added": "2013-06-21"
 }
 }
