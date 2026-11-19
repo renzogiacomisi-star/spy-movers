@@ -50,3 +50,18 @@ Tres gráficos del último año: línea de avance y declive, porcentaje de accio
 - Tasas en vivo: índices de rendimiento de Cboe (5, 10 y 30 años) y futuro de rendimiento a 2 años de CBOT, vía Yahoo.
 - Tasa a 1 año: solo cierre oficial (no hay dato en vivo gratuito).
 - Historia de tasas y variaciones de 1 semana a 1 año: cierre oficial del Tesoro de EE.UU. (respaldo: FRED).
+
+## Horario, pre-market y after-hours
+
+- Horario, feriados y medias jornadas: calendario de NYSE de la librería `exchange_calendars`.
+- Antes de la apertura y después del cierre (hasta las 20:00 de Nueva York) aparece un resumen con futuros, las 10 de mayor peso, petróleo, oro y dólar, contra el último cierre de la rueda. El de pre-market desaparece al abrir.
+
+## Calendario económico y Fed
+
+- Fechas oficiales en `scripts/extras.py` (`EVENTS`): Fed (FOMC), BLS (CPI, PPI, empleo, JOLTS), BEA (PIB, PCE) y Census (ventas minoristas). **Hay que cargar las fechas del año siguiente una vez por año**; la página avisa cuando faltan menos de 45 días de fechas cargadas. Los pedidos de desempleo se generan solos (jueves 8:30).
+- Último dato publicado de cada indicador: FRED.
+- Probabilidades de la próxima reunión de la Fed: cálculo propio con futuros de fed funds a 30 días (CBOT, vía Yahoo) y la metodología de CME FedWatch.
+
+## PDF
+
+El botón "Descargar PDF" baja un resumen con los mismos datos de la página: al cierre si es un día anterior o el mercado ya cerró, hasta la última actualización si está abierto, y con el pre-market o el after-hours si corresponde. El encabezado del PDF aclara a qué hora corresponden los datos.

@@ -10,6 +10,7 @@ Qué movió al S&P 500, versión Streamlit.
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 import sys
@@ -25,8 +26,11 @@ import streamlit.components.v1 as components
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_data as bd  # noqa: E402
+import extras as ex  # noqa: E402
+import pdf_report as pdfr  # noqa: E402
 
 REFRESH_SEC = int(os.environ.get("SPY_REFRESH_SEC", 15 * 60))  # cada cuánto se recalcula
+EXT_SEC = int(os.environ.get("SPY_EXT_SEC", 10 * 60))           # pre-market / after-hours
 CHECK_SEC = int(os.environ.get("SPY_CHECK_SEC", 60))            # cada cuánto cada pestaña mira si hay datos nuevos
 MANUAL_MIN_SEC = 120
 NY = ZoneInfo("America/New_York")
@@ -61,17 +65,45 @@ st.markdown(
 # Datos
 # --------------------------------------------------------------------------- #
 def phase(now: datetime) -> str:
-    """pre / open / post / closed, en hora de Nueva York (no contempla feriados)."""
-    if os.environ.get("SPY_TEST_OPEN"):
-        return "open"
-    if now.weekday() >= 5:
-        return "closed"
-    hm = (now.hour, now.minute)
-    if hm < (9, 30):
-        return "pre"
-    if hm < (16, 5):
-        return "open"
-    return "post"
+    """pre / open / post / closed según el calendario de NYSE (feriados y medias jornadas incluidos)."""
+    if os.environ.get("SPY_TEST_PHASE"):
+        return os.environ["SPY_TEST_PHASE"]
+    return ex.market_clock(now)["phase"]
+
+
+@st.cache_data(ttl=6 * 3600, show_spinner=False)
+def fred_data(day: str) -> dict:
+    return ex.load_fred([s for v in ex.FRED_SERIES.values() for s in v])
+
+
+@st.cache_data(ttl=3 * 3600, show_spinner=False)
+def calendar_data(day: str) -> dict | None:
+    try:
+        return ex.econ_calendar(fred_data(day), day, 10)
+    except Exception as e:  # noqa: BLE001
+        print(f"Aviso: calendario no disponible ({e}).")
+        return None
+
+
+@st.cache_data(ttl=20 * 60, show_spinner=False)
+def fed_data(day: str, bucket: int) -> dict | None:
+    try:
+        return ex.fedwatch(fred_data(day), day)
+    except Exception as e:  # noqa: BLE001
+        print(f"Aviso: probabilidades de la Fed no disponibles ({e}).")
+        return None
+
+
+def clock_data() -> dict:
+    c = ex.market_clock()
+    c["holidays"] = ex.holidays_ahead(None, 45)
+    return c
+
+
+@st.cache_data(ttl=None, max_entries=24, show_spinner=False)
+def pdf_bytes(data_key: str, ext_key: str, _data: dict, _ext: dict | None, _cal: dict | None, _fed: dict | None) -> str:
+    raw = pdfr.build_pdf(_data, _ext, _cal, _fed, datetime.now(NY))
+    return base64.b64encode(raw).decode()
 
 
 @st.cache_data(ttl=6 * 3600, show_spinner=False)
@@ -90,7 +122,26 @@ def base_data(day: str):
 @st.cache_resource
 def shared_state() -> dict:
     """Último cálculo, compartido entre todas las sesiones."""
-    return {"lock": threading.Lock(), "data": None, "ts": 0.0, "key": None}
+    return {"lock": threading.Lock(), "data": None, "ts": 0.0, "key": None,
+            "ext": None, "ext_ts": 0.0, "ext_key": None}
+
+
+def ext_view(st_: dict, day: str, ph: str) -> dict | None:
+    """Pre-market / after-hours compartido, como máximo cada EXT_SEC."""
+    if ph not in ("pre", "post"):
+        return None
+    key = (day, ph)
+    if st_["ext_key"] != key or time.time() - st_["ext_ts"] > EXT_SEC:
+        with st_["lock"]:
+            if st_["ext_key"] != key or time.time() - st_["ext_ts"] > EXT_SEC:
+                try:
+                    holdings = base_data(day)[0]
+                    st_["ext"] = ex.ext_summary(holdings, ph)
+                except Exception as e:  # noqa: BLE001
+                    print(f"Aviso: resumen fuera de rueda no disponible ({e}).")
+                    st_["ext"] = None
+                st_["ext_ts"], st_["ext_key"] = time.time(), key
+    return st_["ext"]
 
 
 def calc(day: str, ph: str) -> dict:
@@ -129,12 +180,16 @@ def read_history(day: str) -> dict | None:
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
 
-def page_html(data: dict, dates: list[str], view: str, live_date: str | None, next_at: float | None = None) -> str:
+def page_html(data: dict, dates: list[str], view: str, live_date: str | None, next_at: float | None = None,
+              extra: dict | None = None) -> str:
     dump = lambda x: json.dumps(x, ensure_ascii=False).replace("</", "<\\/")  # noqa: E731
+    extra = extra or {}
     inject = (
         f"<script>window.__SPY__={dump(data)};window.__SPY_DATES__={dump(dates)};"
         f"window.__SPY_VIEW__={dump(view)};window.__SPY_LIVE_DATE__={dump(live_date)};"
-        f"window.__SPY_REFRESH__={REFRESH_SEC};window.__SPY_NEXT__={dump(next_at)};</script>\n"
+        f"window.__SPY_REFRESH__={REFRESH_SEC};window.__SPY_NEXT__={dump(next_at)};"
+        + "".join(f"window.__SPY_{k}__={dump(v)};" for k, v in extra.items())
+        + "</script>\n"
     )
     return PAGE.replace("<script>\nconst LOC", inject + "<script>\nconst LOC", 1)
 
@@ -172,7 +227,28 @@ def current_view(force: bool = False):
     if warn:
         st.warning(warn)
     nxt = next_update_epoch(st_) if ph == "open" and st_["data"] else None
-    components.html(page_html(data, dates, "live", data["date"], nxt), height=4200, scrolling=False)
+    ext = ext_view(st_, day, ph)
+    cal = calendar_data(day)
+    fed = fed_data(day, int(time.time() // (20 * 60)))
+    extra = {"CLOCK": clock_data(), "EXT": ext, "CAL": cal, "FED": fed}
+    extra.update(pdf_extra(data, ext, cal, fed))
+    components.html(page_html(data, dates, "live", data["date"], nxt, extra), height=4200, scrolling=False)
+
+
+def pdf_extra(data: dict, ext: dict | None, cal: dict | None, fed: dict | None) -> dict:
+    try:
+        b64 = pdf_bytes(f"{data['date']}|{data['generated_at']}", ext["at"] if ext else "", data, ext, cal, fed)
+    except Exception as e:  # noqa: BLE001
+        print(f"Aviso: no se pudo generar el PDF ({e}).")
+        return {}
+    gen = datetime.fromisoformat(data["generated_at"].replace("Z", "+00:00")).astimezone(NY)
+    if ext:
+        suf = f"_{ext['kind']}_" + datetime.fromisoformat(ext["at"]).astimezone(NY).strftime("%H%M")
+    elif data.get("session") == "open":
+        suf = gen.strftime("_%H%M")
+    else:
+        suf = "_cierre"
+    return {"PDF": b64, "PDF_NAME": f"resumen_SP500_{data['date']}{suf}.pdf"}
 
 
 wanted = st.query_params.get("d")
@@ -183,9 +259,11 @@ if force:
 
 if past is not None and past["date"] != datetime.now(NY).strftime("%Y-%m-%d"):
     # Día anterior: estático, sin actualización automática
-    components.html(page_html(past, history_dates(), past["date"], None), height=4200, scrolling=False)
+    extra = {"CLOCK": clock_data()}
+    extra.update(pdf_extra(past, None, None, None))
+    components.html(page_html(past, history_dates(), past["date"], None, None, extra), height=4200, scrolling=False)
 else:
-    live_now = phase(datetime.now(NY)) == "open"
+    live_now = phase(datetime.now(NY)) in ("pre", "open", "post")
     first = {"force": force}
 
     @st.fragment(run_every=CHECK_SEC if live_now else None)

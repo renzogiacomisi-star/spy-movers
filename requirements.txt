@@ -5,3 +5,5 @@ openpyxl>=3.1
 yfinance>=0.2.54
 lxml>=5.0
 streamlit>=1.40
+exchange_calendars>=4.5
+reportlab>=4.0
