@@ -68,10 +68,10 @@ body {
 }
 .wrap { max-width: 1480px; margin: 0 auto; padding: 24px 20px 64px; }
 .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 28px; }
-.layout.has-side { grid-template-columns: minmax(0, 1fr) 320px; grid-template-areas: "ext ext" "hero side" "rest side"; }
+.layout.has-side { grid-template-columns: minmax(0, 1fr) 320px; grid-template-areas: "ext ext" "hero side" "rest rest"; }
 .layout.has-side > .extbox { grid-area: ext; }
 .layout.has-side > .hero { grid-area: hero; }
-.layout.has-side > .side { grid-area: side; align-self: start; }
+.layout.has-side > .side { grid-area: side; align-self: start; margin-bottom: 20px; }
 .layout.has-side > .rest { grid-area: rest; min-width: 0; }
 @media (max-width: 1100px) {
   .layout.has-side { grid-template-columns: minmax(0, 1fr); grid-template-areas: "ext" "hero" "side" "rest"; }
