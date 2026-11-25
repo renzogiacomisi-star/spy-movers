@@ -170,7 +170,7 @@ def load_sectors() -> dict:
     try:
         import requests
 
-        r = requests.get(WIKI_URL, headers={"User-Agent": "spy-movers/1.0 (GitHub Actions)"}, timeout=60)
+        r = requests.get(WIKI_URL, headers={"User-Agent": "spy-movers/1.0 (GitHub Actions)"}, timeout=(5, 30))
         r.raise_for_status()
         table = pd.read_html(io.StringIO(r.text), attrs={"id": "constituents"})[0]
         added_col = next((c for c in table.columns if "added" in str(c).lower()), None)
@@ -308,17 +308,22 @@ def load_official_rates() -> pd.DataFrame | None:
     """Tasas oficiales de cierre (Tesoro de EE.UU.; respaldo FRED; si no, la última copia guardada)."""
     import requests
 
-    hdr = {"User-Agent": "spy-movers/1.0 (herramienta de análisis de mercado)"}
+    from concurrent.futures import ThreadPoolExecutor
+
+    hdr = {"User-Agent": "Mozilla/5.0 (compatible; spy-movers/1.0)"}
     cols = {"1 Yr": "1", "2 Yr": "2", "5 Yr": "5", "10 Yr": "10", "30 Yr": "30"}
     y = datetime.now(timezone.utc).year
+    to = (5, 20)  # conexión, lectura: si no responde rápido, se pasa a la alternativa
+
+    def treasury(year):
+        url = f"{TREASURY_URL}/{year}/all?type=daily_treasury_yield_curve&field_tdr_date_value={year}&page&_format=csv"
+        r = requests.get(url, headers=hdr, timeout=to)
+        r.raise_for_status()
+        return pd.read_csv(io.StringIO(r.text)) if r.text.strip() else None
+
     try:
-        frames = []
-        for year in (y - 2, y - 1, y):
-            url = f"{TREASURY_URL}/{year}/all?type=daily_treasury_yield_curve&field_tdr_date_value={year}&page&_format=csv"
-            r = requests.get(url, headers=hdr, timeout=60)
-            r.raise_for_status()
-            if r.text.strip():
-                frames.append(pd.read_csv(io.StringIO(r.text)))
+        with ThreadPoolExecutor(3) as pool:
+            frames = [f for f in pool.map(treasury, (y - 2, y - 1, y)) if f is not None]
         df = pd.concat(frames)
         df["Date"] = pd.to_datetime(df["Date"])
         out = df.set_index("Date")[list(cols)].rename(columns=cols).apply(pd.to_numeric, errors="coerce")
@@ -331,13 +336,15 @@ def load_official_rates() -> pd.DataFrame | None:
     except Exception as e:  # noqa: BLE001
         print(f"Aviso: no pude leer las tasas del Tesoro ({e}); pruebo FRED.")
     try:
-        series = {}
-        for k in ("1", "2", "5", "10", "30"):
-            r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS{k}", headers=hdr, timeout=60)
+        def fred(k):
+            r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS{k}", headers=hdr, timeout=to)
             r.raise_for_status()
             f = pd.read_csv(io.StringIO(r.text))
             f.columns = ["Date", k]
-            series[k] = pd.to_numeric(f.set_index(pd.to_datetime(f["Date"]))[k], errors="coerce")
+            return k, pd.to_numeric(f.set_index(pd.to_datetime(f["Date"]))[k], errors="coerce")
+
+        with ThreadPoolExecutor(5) as pool:
+            series = dict(pool.map(fred, ("1", "2", "5", "10", "30")))
         out = pd.DataFrame(series).dropna(how="all")
         out = out[out.index >= out.index.max() - pd.Timedelta(days=800)]
         out.attrs["fuente"] = "FRED (Reserva Federal de St. Louis)"
@@ -847,23 +854,31 @@ def compute_markets(close: pd.DataFrame, days: pd.DatetimeIndex) -> dict:
 
 def compute_rates(close: pd.DataFrame, official: pd.DataFrame | None, last_trade: dict | None) -> dict:
     live = []
+    last_day = close.index[-1] if len(close.index) else None
+
+    def official_row(name, k):
+        if official is None or k not in official.columns:
+            return None
+        so = official[k].dropna()
+        if len(so) < 2:
+            return None
+        return {"t": None, "n": name, "k": k, "v": _f(so.iloc[-1], 3), "d1": _f((so.iloc[-1] - so.iloc[-2]) * 100, 1),
+                "fecha": so.index[-1].strftime("%Y-%m-%d"), "hora": None, "en_vivo": False}
+
+    # 1 año: no hay dato en vivo gratuito; se usa el cierre oficial
+    r1 = official_row("1 año", "1")
+    if r1:
+        live.append(r1)
     for t, name, k in LIVE_RATES:
-        if t not in close.columns:
-            continue
-        s = close[t].dropna()
-        if len(s) < 2:
+        s = close[t].dropna() if t in close.columns else pd.Series(dtype=float)
+        # Sin datos, o datos viejos (más de 4 días detrás del resto): se usa el cierre oficial
+        if len(s) < 2 or (last_day is not None and (last_day - s.index[-1]).days > 4):
+            row = official_row(name, k)
+            if row:
+                live.append(row)
             continue
         live.append({"t": t, "n": name, "k": k, "v": _f(s.iloc[-1], 3), "d1": _f((s.iloc[-1] - s.iloc[-2]) * 100, 1),
-                     "fecha": s.index[-1].strftime("%Y-%m-%d"), "hora": (last_trade or {}).get(t)})
-    for x in live:
-        x["en_vivo"] = True
-    # 1 año: no hay dato en vivo gratuito; se usa el cierre oficial
-    if official is not None and "1" in official.columns:
-        s1 = official["1"].dropna()
-        if len(s1) >= 2:
-            live.insert(0, {"t": None, "n": "1 año", "k": "1", "v": _f(s1.iloc[-1], 3),
-                            "d1": _f((s1.iloc[-1] - s1.iloc[-2]) * 100, 1), "fecha": s1.index[-1].strftime("%Y-%m-%d"),
-                            "hora": None, "en_vivo": False})
+                     "fecha": s.index[-1].strftime("%Y-%m-%d"), "hora": (last_trade or {}).get(t), "en_vivo": True})
     off = None
     if official is not None and len(official):
         rows = []

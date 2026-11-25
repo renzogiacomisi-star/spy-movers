@@ -137,6 +137,8 @@ select:focus-visible, input:focus-visible, button:focus-visible, .seg:focus-visi
 .refresh { font: inherit; font-size: 13px; font-weight: 700; color: var(--accent); background: var(--panel);
   border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; cursor: pointer; }
 .refresh:hover { border-color: var(--accent); }
+.refresh.back { background: var(--spy); color: var(--on-color); border-color: var(--spy); }
+.stale-note { color: var(--down); font-weight: 700; }
 
 /* Hero */
 .brand { font-weight: 700; font-stretch: 75%; font-size: 17px; }
@@ -287,6 +289,20 @@ td .nm { color: var(--muted); max-width: 210px; overflow: hidden; text-overflow:
 @media (max-width: 900px) { .bitems { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 500px) { .bitems { grid-template-columns: 1fr; } }
 
+/* Mapa de calor */
+.heatmap { position: relative; width: 100%; height: 620px; background: #1B1E26; border-radius: 6px; overflow: hidden; margin-top: 10px; }
+@media (max-width: 700px) { .heatmap { height: 520px; } }
+.hm-sec { position: absolute; box-sizing: border-box; border: 1px solid #1B1E26; }
+.hm-sec-name { position: absolute; left: 0; right: 0; top: 0; height: 16px; padding: 0 5px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .02em; color: #C9CED8; background: #262A34; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 16px; }
+.hm-cell { position: absolute; box-sizing: border-box; border: 1px solid #1B1E26; color: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; overflow: hidden; cursor: default; line-height: 1.1; }
+.hm-cell:hover, .hm-cell:focus { outline: 2px solid #fff; outline-offset: -2px; z-index: 2; }
+.hm-cell b { font-weight: 800; }
+.hm-cell span { opacity: .92; }
+.heat-legend-bar { display: flex; border-radius: 4px; overflow: hidden; font-size: 11px; font-weight: 700; color: #fff; }
+.heat-legend-bar span { padding: 3px 7px; }
+
 /* Clima del día */
 .rg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin: 6px 0 4px; }
 .rg-sesgo { font-size: 24px; font-weight: 800; font-stretch: 75%; }
@@ -352,6 +368,7 @@ footer { margin-top: 32px; font-size: 13px; color: var(--muted); max-width: 80ch
       <select id="date" aria-label="Elegir día"></select>
       <span id="updated" class="muted"></span>
       <button id="refresh" type="button" class="refresh" hidden>Actualizar ahora</button>
+      <button id="back" type="button" class="refresh back" hidden>Volver a hoy</button>
       <button id="pdf" type="button" class="refresh" hidden>Descargar PDF</button>
     </div>
   </header>
@@ -387,14 +404,14 @@ async function init() {
     const d0 = window.__SPY__;
     const liveDate = window.__SPY_LIVE_DATE__ || null;
     const isLive = window.__SPY_VIEW__ === "live";
-    const liveLabel = liveDate
-      ? (isLive && d0.session === "open" ? "Hoy, en vivo" : fechaCorta(liveDate))
-      : "Último dato";
-    const past = (window.__SPY_DATES__ || []).filter(x => x !== liveDate);
+    const liveLabel = "Hoy (en vivo)";
+    const past = (window.__SPY_DATES__ || []).filter(x => !isLive || x !== liveDate);
     sel.innerHTML = `<option value="live">${liveLabel}</option>` +
       past.map(x => `<option value="${x}">${fechaCorta(x)}</option>`).join("");
     sel.value = isLive ? "live" : d0.date;
     sel.addEventListener("change", () => goTo(sel.value));
+    const back = document.getElementById("back");
+    if (back && !isLive) { back.hidden = false; back.onclick = () => goTo("live"); }
     render(d0);
     fitFrame();
     return;
@@ -487,6 +504,10 @@ function render(d) {
     "Actualizado " + gen.toLocaleString(LOC, { timeZone: "America/Montevideo", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) + " (Montevideo)"
     + (d.session === "open" && window.__SPY_NEXT__ && window.__SPY_VIEW__ === "live"
       ? `. Próxima actualización ${new Date(window.__SPY_NEXT__ * 1000).toLocaleTimeString(LOC, { timeZone: "America/Montevideo", hour: "2-digit", minute: "2-digit" })}.` : "");
+  if (window.__SPY_STALE__ && window.__SPY_VIEW__ === "live") {
+    document.getElementById("updated").innerHTML = `<span class="stale-note">La actualización está demorada.</span> ` +
+      esc(document.getElementById("updated").textContent).replace(/\. Próxima actualización.*$/, ".");
+  }
   const rb = document.getElementById("refresh");
   if (rb) {
     rb.hidden = !(window.__SPY__ && window.__SPY_VIEW__ === "live" && d.session === "open");
@@ -604,6 +625,22 @@ function render(d) {
         ${breadth(d)}
       </section>
 
+      <section class="panel span-12" aria-labelledby="h-heat">
+        <div class="h-row" style="justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div class="h-row" style="margin:0">
+            <h2 id="h-heat">Mapa del S&amp;P 500</h2>
+            ${helpBtn("help-heat", "Cómo leer el mapa")}
+          </div>
+          <div class="heat-legend-bar" aria-hidden="true">${[-3, -2, -1, 0, 1, 2, 3].map(v => `<span style="background:${heatColor(v)}">${v > 0 ? "+" : ""}${v}%</span>`).join("")}</div>
+        </div>
+        <div id="help-heat" class="help-box" hidden>
+          <p>Cada rectángulo es una acción del índice, agrupada por sector. El tamaño es su peso en el S&amp;P 500 y el color, su variación del día: verde si sube, rojo si baja, más intenso cuanto mayor el movimiento (la escala satura en ±3%).</p>
+          <p>Sirve para ver de un vistazo si el día fue generalizado (todo del mismo color) o si lo movieron pocas empresas grandes. Pasá el cursor o tocá una acción para ver el detalle.</p>
+        </div>
+        <div id="heatmap" class="heatmap" role="img" aria-label="Mapa del S&amp;P 500 por sector, tamaño según peso y color según variación del día"></div>
+        <p class="tug-caption muted" id="heatcap" aria-live="polite">Pasá el cursor o tocá una acción para ver el detalle.</p>
+      </section>
+
       <section class="panel span-6" aria-labelledby="h-conc">
         <h2 id="h-conc">Concentración</h2>
         ${concentration(d, usePts)}
@@ -647,7 +684,8 @@ function render(d) {
   drawSwarm(d);
   wireBreadth(d);
   wireMarkets(d);
-  window.onresize = debounce(() => { drawSwarm(d); fitTugLabels(); }, 150);
+  drawHeatmap(d);
+  window.onresize = debounce(() => { drawSwarm(d); fitTugLabels(); drawHeatmap(d); }, 150);
   allTable(d.components, usePts, usePts ? d.model_pts : d.model_ret);
 
   const miss = d.missing?.length ? ` Sin precio hoy: ${d.missing.map(esc).join(", ")}.` : "";
@@ -1040,7 +1078,7 @@ function ratesPanel(d) {
         <div class="heat-legend"><span class="sw" style="background:color-mix(in srgb, var(--heat-dn) 60%, transparent)"></span>baja la tasa
           <span class="sw" style="background:color-mix(in srgb, var(--down) 60%, transparent)"></span>sube la tasa
           <span class="muted">· más intenso cuanto mayor el cambio dentro de cada columna</span></div>
-        <p class="src-note"><b>Tasa y variación de 1 día:</b> ${live ? "en vivo, con hasta ~15 minutos de demora" : `último dato del ${esc(fdl((r.live.find(x => x.en_vivo) || r.live[0])?.fecha || d.date))}`} (índices de rendimiento de Cboe para 5, 10 y 30 años; futuro de rendimiento a 2 años de CBOT${t2?.hora ? `, último dato ${hm(t2.hora)} de Nueva York` : ""}). Pueden diferir 1 o 2 pb de la tasa oficial por metodología. <b>1 año:</b> no hay dato en vivo gratuito para ese plazo, así que tasa y variación de 1 día son del cierre oficial (marcada "cierre").</p>
+        <p class="src-note"><b>Tasa y variación de 1 día:</b> ${live ? "en vivo, con hasta ~15 minutos de demora" : `último dato del ${esc(fdl((r.live.find(x => x.en_vivo) || r.live[0])?.fecha || d.date))}`} (índices de rendimiento de Cboe para 5, 10 y 30 años${t2?.en_vivo ? `; futuro de rendimiento a 2 años de CBOT${t2.hora ? `, último dato ${hm(t2.hora)} de Nueva York` : ""}` : ""}). Pueden diferir 1 o 2 pb de la tasa oficial por metodología. ${(() => { const c = r.live.filter(x => x.en_vivo === false).map(x => x.n); return c.length ? `<b>${esc(c.join(" y "))}:</b> sin dato en vivo disponible, así que tasa y variación de 1 día son del cierre oficial (marcadas "cierre").` : ""; })()}</p>
         ${off ? `<p class="src-note"><b>Variaciones de 1 semana a 1 año y gráfico:</b> cierre oficial del ${esc(fdl(off.fecha))}, fuente ${esc(off.fuente.replace(/\.$/, ""))}.</p>
         <div id="rates-chart" class="swarm-box" style="margin-top:10px"></div>
         <p class="tug-caption muted small" id="rates-chart-cap" aria-live="polite">Pasá el cursor o tocá el gráfico.</p>`
@@ -1095,6 +1133,94 @@ function wireMarkets(d) {
     draw();
     window.addEventListener("resize", debounce(draw, 150));
   }
+}
+
+/* ---------- Mapa de calor ---------- */
+const HEAT_STOPS = [[-3, [246, 53, 56]], [-2, [191, 64, 69]], [-1, [139, 68, 78]], [0, [65, 69, 84]],
+                    [1, [53, 118, 78]], [2, [47, 158, 79]], [3, [48, 204, 90]]];
+function heatColor(v) {
+  if (v == null || Number.isNaN(v)) return "rgb(65,69,84)";
+  const x = Math.max(-3, Math.min(3, v));
+  for (let i = 1; i < HEAT_STOPS.length; i++) {
+    const [v1, c1] = HEAT_STOPS[i - 1], [v2, c2] = HEAT_STOPS[i];
+    if (x <= v2) { const t = (x - v1) / (v2 - v1); return `rgb(${c1.map((c, k) => Math.round(c + (c2[k] - c) * t)).join(",")})`; }
+  }
+  return "rgb(48,204,90)";
+}
+
+// Treemap "squarified": rectángulos lo más cuadrados posible
+function squarify(items, x, y, w, h) {
+  const out = [];
+  const total = items.reduce((a, it) => a + it.v, 0);
+  if (!total || w <= 0 || h <= 0) return out;
+  const scale = w * h / total;
+  const rest = items.map(it => ({ ...it, a: it.v * scale }));
+  let row = [];
+  const worst = (r, side) => {
+    const sum = r.reduce((a, it) => a + it.a, 0);
+    const mx = Math.max(...r.map(it => it.a)), mn = Math.min(...r.map(it => it.a));
+    return Math.max(side * side * mx / (sum * sum), (sum * sum) / (side * side * mn));
+  };
+  const place = r => {
+    const sum = r.reduce((a, it) => a + it.a, 0);
+    if (w >= h) {
+      const cw = sum / h; let yy = y;
+      r.forEach(it => { const hh = it.a / cw; out.push({ ...it, x, y: yy, w: cw, h: hh }); yy += hh; });
+      x += cw; w -= cw;
+    } else {
+      const rh = sum / w; let xx = x;
+      r.forEach(it => { const ww = it.a / rh; out.push({ ...it, x: xx, y, w: ww, h: rh }); xx += ww; });
+      y += rh; h -= rh;
+    }
+  };
+  while (rest.length) {
+    const side = Math.min(w, h), c = rest[0];
+    if (!row.length || worst(row.concat([c]), side) <= worst(row, side)) { row.push(c); rest.shift(); }
+    else { place(row); row = []; }
+  }
+  if (row.length) place(row);
+  return out;
+}
+
+function drawHeatmap(d) {
+  const box = document.getElementById("heatmap");
+  if (!box) return;
+  const W = box.clientWidth, H = box.clientHeight;
+  const comps = d.components.filter(c => c.w > 0);
+  const bySec = {};
+  comps.forEach(c => (bySec[c.s] = bySec[c.s] || []).push(c));
+  const secs = Object.entries(bySec).map(([s, cs]) => ({ s, cs, v: cs.reduce((a, c) => a + c.w, 0) }))
+    .sort((a, b) => b.v - a.v);
+  const unit = comps.some(c => c.p != null) ? "pts" : "pp";
+  let html = "", cells = [];
+  squarify(secs, 0, 0, W, H).forEach(sr => {
+    const head = sr.h > 40 && sr.w > 50 ? 16 : 0;
+    html += `<div class="hm-sec" style="left:${sr.x}px;top:${sr.y}px;width:${sr.w}px;height:${sr.h}px">
+      ${head ? `<div class="hm-sec-name" title="${esc(sr.s)}">${esc(sr.s)}</div>` : ""}</div>`;
+    const items = sr.cs.slice().sort((a, b) => b.w - a.w).map(c => ({ v: c.w, c }));
+    squarify(items, sr.x + 1, sr.y + head + 1, sr.w - 2, sr.h - head - 2).forEach(r => {
+      const c = r.c, i = cells.push(c) - 1;
+      const fs = Math.max(8, Math.min(26, Math.sqrt(r.w * r.h) / 4.2));
+      const pfs = Math.max(8, fs * 0.62);
+      const showT = r.w > 26 && r.h > 14 && r.w - 8 > c.t.length * fs * 0.72;
+      const showP = showT && r.h > fs * 2.3 && r.w - 8 > 6 * pfs * 0.62;
+      html += `<div class="hm-cell" tabindex="${r.w * r.h > 900 ? 0 : -1}" data-i="${i}" style="left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;background:${heatColor(c.r)};font-size:${fs}px">
+        ${showT ? `<b>${esc(c.t)}</b>` : ""}${showP ? `<span style="font-size:${pfs}px">${fmt(c.r, 2)}%</span>` : ""}</div>`;
+    });
+  });
+  box.innerHTML = html;
+  const cap = document.getElementById("heatcap");
+  const show = el => {
+    const c = cells[+el.dataset.i];
+    if (!c) return;
+    cap.innerHTML = `<b>${esc(c.t)}</b> ${esc(c.n)}, ${esc(c.s)}: <span class="${cls(c.r)}">${fmt(c.r, 2)}%</span> en el día, peso ${fmt(c.w, 2, false)}%, aporte <span class="${cls(c.p ?? c.c)}">${fmt(c.p ?? c.c, 2)} ${unit}</span>.`;
+    cap.classList.remove("muted");
+  };
+  box.querySelectorAll(".hm-cell").forEach(el => {
+    el.addEventListener("mouseenter", () => show(el));
+    el.addEventListener("focus", () => show(el));
+    el.addEventListener("click", () => show(el));
+  });
 }
 
 /* ---------- Clima del día ---------- */

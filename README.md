@@ -4,12 +4,10 @@ Página que descompone el movimiento del SPY por acción y por sector, en puntos
 
 ## Cómo funciona
 
-- **Streamlit Community Cloud** corre `app.py`. Con el mercado abierto recalcula cada 15 minutos (`REFRESH_SEC`) y el resultado se comparte entre todos los usuarios conectados: da igual si la miran 2 o 30 personas. Cada pestaña abierta revisa cada minuto si hay un cálculo nuevo y, si no lo hay, no cambia nada. Mientras se calcula aparece el aviso "Actualizando datos…" y se sigue viendo la versión anterior.
-- El botón "Actualizar ahora" fuerza un cálculo nuevo solo si el último tiene más de 2 minutos, para no saturar a Yahoo. F5 recarga la página con el último cálculo compartido.
-- Pesos (SSGA), sectores (Wikipedia) e historia de precios (Yahoo) se descargan como máximo cada 6 horas.
+- **Streamlit Community Cloud** corre `app.py`. Todas las descargas las hace un proceso de fondo (el "motor"), separado de la página: datos base cada 6 horas, precios del día cada 15 minutos con el mercado abierto, pre-market y after-hours cada 10 minutos, calendario cada 3 horas y Fed cada 20 minutos. La página nunca espera una descarga: muestra siempre lo último que tiene, con la hora de los datos, y avisa si la actualización está demorada. Solo después de un reinicio muestra un mensaje de carga hasta tener los primeros datos.
+- El log de Streamlit registra cuánto tarda cada paso (líneas que empiezan con `[motor ...]`).
+- El botón "Actualizar ahora" pide un cálculo nuevo si el último tiene más de 2 minutos.
 - **GitHub Actions** corre una vez por día después del cierre y guarda la foto del día en `site/data/history/`, para poder ver días anteriores con el selector.
-
-Contribución de cada acción = peso en el SPY × variación del día. En puntos de índice: contribución / 100 × cierre anterior del S&P 500.
 
 ## Archivos
 
@@ -65,3 +63,7 @@ Tres gráficos del último año: línea de avance y declive, porcentaje de accio
 ## PDF
 
 El botón "Descargar PDF" baja un resumen con los mismos datos de la página: al cierre si es un día anterior o el mercado ya cerró, hasta la última actualización si está abierto, y con el pre-market o el after-hours si corresponde. El encabezado del PDF aclara a qué hora corresponden los datos.
+
+## Mapa del S&P 500
+
+Mapa de calor tipo treemap: cada acción del índice agrupada por sector, con tamaño según su peso en el SPY y color según su variación del día (escala de -3% a +3%).

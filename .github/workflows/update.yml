@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - run: pip install pandas numpy requests openpyxl lxml yfinance
+      - run: pip install pandas numpy requests openpyxl lxml yfinance exchange_calendars
 
       - name: Calcular contribución y amplitud
         run: python scripts/build_data.py

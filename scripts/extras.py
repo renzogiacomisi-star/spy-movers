@@ -319,23 +319,29 @@ MONTHS = ["ene.", "feb.", "mar.", "abr.", "may.", "jun.", "jul.", "ago.", "sep."
 
 
 def load_fred(series: list[str]) -> dict[str, pd.Series]:
+    """Series de FRED en paralelo, con tiempo máximo corto: si FRED no responde, el calendario sale sin 'último dato'."""
     import requests
+    from concurrent.futures import ThreadPoolExecutor
 
-    out = {}
     start = (datetime.now() - timedelta(days=900)).strftime("%Y-%m-%d")
-    for sid in sorted(set(series)):
+
+    def one(sid):
         try:
             r = requests.get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}",
-                             headers={"User-Agent": "spy-movers/1.0"}, timeout=30)
+                             headers={"User-Agent": "Mozilla/5.0 (compatible; spy-movers/1.0)"}, timeout=(5, 12))
             r.raise_for_status()
             f = pd.read_csv(io.StringIO(r.text))
             f.columns = ["d", "v"]
             s = pd.to_numeric(f["v"], errors="coerce")
             s.index = pd.to_datetime(f["d"])
-            out[sid] = s.dropna()
+            return sid, s.dropna()
         except Exception as e:  # noqa: BLE001
-            print(f"Aviso: no pude leer {sid} de FRED ({e}).")
-    return out
+            print(f"Aviso: no pude leer {sid} de FRED ({type(e).__name__}).")
+            return sid, None
+
+    with ThreadPoolExecutor(8) as pool:
+        res = list(pool.map(one, sorted(set(series))))
+    return {k: v for k, v in res if v is not None and len(v)}
 
 
 def _num(x, nd=1):
